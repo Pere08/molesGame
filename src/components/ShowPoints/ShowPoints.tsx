@@ -1,4 +1,6 @@
-const ShowPoints = ({numPoints}: {numPoints: number}) => {
+import { IShowPoints } from "./ShowPoints.props";
+
+const ShowPoints = ({numPoints}: IShowPoints) => {
 
     return (
       <div className="show-points">

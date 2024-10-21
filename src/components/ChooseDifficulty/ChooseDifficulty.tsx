@@ -1,10 +1,7 @@
-import { Difficulty } from "../../pages/Home/Home";
 import DifficultyButton from "../DifficultyButton/DifficultyButton";
+import { IChooseDifficulty } from "./ChooseDifficulty.props";
 
-const ChooseDifficulty = ({difficultyList,  setDifficulty}: {
-  setDifficulty: (value: Difficulty) => void;
-  difficultyList: string[];
-}) => {
+const ChooseDifficulty = ({difficultyList,  setDifficulty}: IChooseDifficulty) => {
 
     return (
       <div className="choose-difficulty-button-box">

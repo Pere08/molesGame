@@ -1,9 +1,7 @@
 import { Difficulty } from "../../pages/Home/Home";
+import { IDifficultyButton } from "./DifficultyButton.props";
 
-const DifficultyButton = ({name, onClick}: {
-    name: string, 
-    onClick: (value: Difficulty) => void;
-}) => {
+const DifficultyButton = ({name, onClick}: IDifficultyButton) => {
     return (
       <button className="difficulty-button" onClick={() => onClick(name as Difficulty)}>{name}</button>
     );

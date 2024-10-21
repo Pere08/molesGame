@@ -1,9 +1,9 @@
+import { IUserNameInput } from "./UserNameInput.props";
+
 const UserNameInput = ({
   defaultValue,
   setUserName
-}: {
-    defaultValue: string;
-    setUserName: (value: string) => void}
+}: IUserNameInput
 ) => {
     return (
       <input type="text" defaultValue={defaultValue} onChange={(name) => setUserName(name.target.value)}/>

@@ -1,4 +1,6 @@
-const InformationBar = ({userName, difficultyLevel}: {userName: string; difficultyLevel: string}) => {
+import { IInformationBar } from "./InformationBar.props";
+
+const InformationBar = ({userName, difficultyLevel}: IInformationBar) => {
 
     return (
       <div className="information-bar">

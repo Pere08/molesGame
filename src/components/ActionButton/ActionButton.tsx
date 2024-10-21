@@ -1,11 +1,9 @@
+import { IActionButton } from "./ActionButton.props";
+
 export type actionButton = 'start' | 'stop';
 
 const ActionButton = ({togglingState, stop, start}: 
-  {
-    togglingState: boolean
-    start: () => void
-    stop: () => void
-  }) => {
+  IActionButton) => {
     return (
       <div className="action-button">
         {

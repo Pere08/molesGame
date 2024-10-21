@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { fetchDiglettImage } from "../../services/pokeService";
+import { IMoleBox } from "./MoleBox.props";
 
 const MoleBox = ({
   show,
   setNumPoints,
   pointsByDifficulty,
-}: {
-  show: boolean;
-  setNumPoints: (value: number | ((prev: number) => number)) => void;
-  pointsByDifficulty: number;
-}) => {
+}: IMoleBox ) => {
   const [diglettImage, setDiglettImage] = useState<string>("");
 
   useEffect(() => {
