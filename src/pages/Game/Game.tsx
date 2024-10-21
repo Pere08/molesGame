@@ -6,7 +6,7 @@ import { useMoleBoxToggler } from "../../hooks/useMoleBoxToggler";
 import { Difficulty } from "../Home/Home";
 import { difficultyParameters } from "../../utils/gameParameters";
 import ActionButton from "../../components/ActionButton/ActionButton";
-import CountDown from "../../components/Timer/CountDown";
+import CountDown from "../../components/CountDown/CountDown";
 
 type moleBosxes = [boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean];
 
