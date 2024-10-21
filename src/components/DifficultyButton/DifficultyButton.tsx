@@ -1,4 +1,4 @@
-import { Difficulty } from "../../pages/Home";
+import { Difficulty } from "../../pages/Home/Home";
 
 const DifficultyButton = ({name, onClick}: {
     name: string, 

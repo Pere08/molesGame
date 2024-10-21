@@ -1,4 +1,4 @@
-import { Difficulty } from "../../pages/Home";
+import { Difficulty } from "../../pages/Home/Home";
 import DifficultyButton from "../DifficultyButton/DifficultyButton";
 
 const ChooseDifficulty = ({difficultyList,  setDifficulty}: {

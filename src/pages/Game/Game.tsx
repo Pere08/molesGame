@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
-import InformationBar from "../components/InformationBar/InformationBar";
-import ShowPoints from "../components/ShowPoints/ShowPoints";
-import MoleBox from "../components/MoleBox/MoleBox";
-import { useMoleBoxToggler } from "../../src/hooks/useMoleBoxToggler";
-import { Difficulty } from "./Home";
-import { difficultyParameters } from "../utils/gameParameters";
-import ActionButton from "../components/ActionButton/ActionButton";
+import InformationBar from "../../components/InformationBar/InformationBar";
+import ShowPoints from "../../components/ShowPoints/ShowPoints";
+import MoleBox from "../../components/MoleBox/MoleBox";
+import { useMoleBoxToggler } from "../../hooks/useMoleBoxToggler";
+import { Difficulty } from "../Home/Home";
+import { difficultyParameters } from "../../utils/gameParameters";
+import ActionButton from "../../components/ActionButton/ActionButton";
 
 type moleBosxes = [boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean];
 

@@ -1,19 +1,19 @@
-// sw.js
-
 import { precacheAndRoute } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 
-// Habilitar el precaching
 precacheAndRoute(self.__WB_MANIFEST || []);
 
-// Manejo de caché
 registerRoute(
   ({ request }) => request.destination === 'document',
   new StaleWhileRevalidate()
 );
 
-// Escuchar eventos de instalación y activación
+registerRoute(
+  ({ request }) => request.destination === 'image',
+  new StaleWhileRevalidate()
+);
+
 self.addEventListener('install', (event) => {
   console.log('Service Worker installing...');
 });

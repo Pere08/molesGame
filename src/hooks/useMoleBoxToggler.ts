@@ -1,5 +1,5 @@
 import { useEffect, useCallback } from "react";
-import { Difficulty } from "../pages/Home";
+import { Difficulty } from "../pages/Home/Home";
 import { difficultyParameters } from "../utils/gameParameters";
 
 type moleBoxes = [boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean];
