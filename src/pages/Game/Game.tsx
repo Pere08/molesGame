@@ -21,7 +21,10 @@ const Game = () => {
 
   return (
     <div>
-      <InformationBar userName={currentName} difficultyLevel={currentDifficulty} />
+      <InformationBar
+        userName={currentName}
+        difficultyLevel={currentDifficulty}
+      />
       <div>
         <ShowPoints numPoints={numPoints} />
         <CountDown
@@ -36,7 +39,9 @@ const Game = () => {
             key={index}
             show={box}
             setNumPoints={setNumPoints}
-            pointsByDifficulty={difficultyParameters[currentDifficulty as Difficulty].points}
+            pointsByDifficulty={
+              difficultyParameters[currentDifficulty as Difficulty].points
+            }
           />
         ))}
       </div>

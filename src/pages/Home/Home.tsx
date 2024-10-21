@@ -40,7 +40,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1 className="title">Mole's Game</h1>    
+      <h1 className="title">Mole's Game</h1>
       <div className="input-username" data-testid="username-input">
         <UserNameInput defaultValue={userName} setUserName={setUserName} />
       </div>

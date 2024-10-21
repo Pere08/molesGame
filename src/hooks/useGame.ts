@@ -9,7 +9,7 @@ export const useGame = () => {
   const currentDifficulty = localStorage.getItem('difficulty') ?? 'easy';
   const currentName = localStorage.getItem('userName') ?? '';
   const [isToggling, setIsToggling] = useState(false);
-  
+
   const togglingState = useMemo(() => isToggling, [isToggling]);
 
   const stopToggling = useCallback(() => {
@@ -29,8 +29,8 @@ export const useGame = () => {
         return Array(9).fill(false);
       } else {
         const randomIndex = Math.floor(Math.random() * 9);
-        const newMoleBoxes = prev.map((_, index) => 
-          index === randomIndex ? true : false
+        const newMoleBoxes = prev.map((_, index) =>
+          index === randomIndex ? true : false,
         ) as moleBoxes;
         return newMoleBoxes;
       }
@@ -43,7 +43,7 @@ export const useGame = () => {
     if (isToggling) {
       interval = setInterval(
         toggleMoleBoxes,
-        difficultyParameters[currentDifficulty as Difficulty].time
+        difficultyParameters[currentDifficulty as Difficulty].time,
       );
     }
 
