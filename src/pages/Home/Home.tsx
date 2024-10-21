@@ -40,14 +40,15 @@ const Home = () => {
   return (
     <div className="home">
       <h1 className="title">Mole's Game</h1>
-      <div className="input-username">
+      <div className="input-username" data-testid="username-input">
         <UserNameInput defaultValue={userName} setUserName={setUserName} />
       </div>
-      <div className="choose-difficulty">
+      <div className="choose-difficulty" data-testid="difficulty-choice">
         <ChooseDifficulty difficultyList={difficultyList} setDifficulty={setDifficulty} />
       </div>
       <div className="start-button">
         <button 
+          data-testid="start-button"
           disabled={!userName || !difficulty}
           onClick={onSubmit}
         >
