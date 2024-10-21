@@ -6,12 +6,12 @@ precacheAndRoute(self.__WB_MANIFEST || []);
 
 registerRoute(
   ({ request }) => request.destination === 'document',
-  new StaleWhileRevalidate()
+  new StaleWhileRevalidate(),
 );
 
 registerRoute(
   ({ request }) => request.destination === 'image',
-  new StaleWhileRevalidate()
+  new StaleWhileRevalidate(),
 );
 
 self.addEventListener('install', (event) => {

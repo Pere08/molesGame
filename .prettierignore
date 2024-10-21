@@ -1,0 +1,8 @@
+node_modules
+dist
+build
+*.json
+*.svg
+*.png
+public
+cypress

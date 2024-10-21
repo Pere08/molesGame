@@ -1,4 +1,4 @@
-export interface IUserNameInput  {
+export interface IUserNameInput {
   defaultValue: string;
-  setUserName: (value: string) => void
+  setUserName: (value: string) => void;
 }

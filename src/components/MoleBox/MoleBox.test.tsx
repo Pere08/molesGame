@@ -4,7 +4,9 @@ import { vi } from 'vitest';
 import { fetchDiglettImage } from '../../services/pokeService';
 
 vi.mock('../../services/pokeService', () => ({
-  fetchDiglettImage: vi.fn().mockResolvedValue('https://pokeapi.co/media/sprites/pokemon/50.png'),
+  fetchDiglettImage: vi
+    .fn()
+    .mockResolvedValue('https://pokeapi.co/media/sprites/pokemon/50.png'),
 }));
 
 describe('MoleBox', () => {
@@ -13,14 +15,22 @@ describe('MoleBox', () => {
   const pointsByDifficulty = 10;
 
   beforeEach(() => {
-    mockedFetchDiglettImage.mockResolvedValue('https://pokeapi.co/media/sprites/pokemon/50.png');
+    mockedFetchDiglettImage.mockResolvedValue(
+      'https://pokeapi.co/media/sprites/pokemon/50.png',
+    );
   });
 
   it('renders correctly when show is true', async () => {
     const setNumPointsMock = vi.fn();
     const pointsByDifficulty = 10;
 
-    render(<MoleBox show={true} setNumPoints={setNumPointsMock} pointsByDifficulty={pointsByDifficulty} />);
+    render(
+      <MoleBox
+        show={true}
+        setNumPoints={setNumPointsMock}
+        pointsByDifficulty={pointsByDifficulty}
+      />,
+    );
 
     const button = await screen.findByRole('button');
     expect(button).toBeInTheDocument();
@@ -30,14 +40,26 @@ describe('MoleBox', () => {
     const setNumPointsMock = vi.fn();
     const pointsByDifficulty = 10;
 
-    render(<MoleBox show={false} setNumPoints={setNumPointsMock} pointsByDifficulty={pointsByDifficulty} />);
-    
+    render(
+      <MoleBox
+        show={false}
+        setNumPoints={setNumPointsMock}
+        pointsByDifficulty={pointsByDifficulty}
+      />,
+    );
+
     const nopText = screen.getByText(/nop/i);
     expect(nopText).toBeInTheDocument();
   });
 
   it('calls setNumPoints when the button is clicked', async () => {
-    render(<MoleBox show={true} setNumPoints={setNumPointsMock} pointsByDifficulty={pointsByDifficulty} />);
+    render(
+      <MoleBox
+        show={true}
+        setNumPoints={setNumPointsMock}
+        pointsByDifficulty={pointsByDifficulty}
+      />,
+    );
 
     const button = await screen.findByRole('button');
     await fireEvent.click(button);

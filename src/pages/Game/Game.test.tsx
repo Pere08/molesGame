@@ -12,19 +12,22 @@ vi.mock('../../components/InformationBar/InformationBar', () => ({
       <div>{userName}</div>
       <div>{difficultyLevel}</div>
     </div>
-  )
+  ),
 }));
 
 vi.mock('../../components/ShowPoints/ShowPoints', () => ({
-  default: ({ numPoints }: IShowPoints) => <div>{numPoints}</div>
+  default: ({ numPoints }: IShowPoints) => <div>{numPoints}</div>,
 }));
 
 vi.mock('../../components/MoleBox/MoleBox', () => ({
   default: ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => (
-    <button onClick={() => setNumPoints((prev) => prev + pointsByDifficulty)} style={{ display: show ? 'block' : 'none' }}>
+    <button
+      onClick={() => setNumPoints((prev) => prev + pointsByDifficulty)}
+      style={{ display: show ? 'block' : 'none' }}
+    >
       Mole
     </button>
-  )
+  ),
 }));
 
 vi.mock('../../components/ActionButton/ActionButton', () => ({
@@ -33,7 +36,7 @@ vi.mock('../../components/ActionButton/ActionButton', () => ({
       <button onClick={start}>Start</button>
       <button onClick={stop}>Stop</button>
     </div>
-  )
+  ),
 }));
 
 describe('Game', () => {
@@ -44,7 +47,7 @@ describe('Game', () => {
 
   it('renders InformationBar with username and difficulty level', () => {
     render(<Game />);
-    
+
     expect(screen.getByText('John Doe')).toBeInTheDocument();
     expect(screen.getByText('easy')).toBeInTheDocument();
   });
@@ -57,33 +60,33 @@ describe('Game', () => {
 
   it('starts toggling and shows mole boxes', () => {
     render(<Game />);
-    
+
     const startButton = screen.getByText('Start');
     fireEvent.click(startButton);
-    
+
     const moleBoxes = screen.getAllByText('Mole');
     expect(moleBoxes.length).toBe(9);
   });
 
   // it('stops toggling and hides mole boxes', () => {
   //   render(<Game />);
-    
+
   //   const startButton = screen.getByText('Start');
   //   fireEvent.click(startButton);
-    
+
   //   const stopButton = screen.getByText('Stop');
   //   fireEvent.click(stopButton);
-    
+
   //   const moleBoxes = screen.queryAllByText('Mole');
   //   expect(moleBoxes.length).toBe(0);
   // });
 
   // it('increments numPoints when mole is clicked', async () => {
   //   render(<Game />);
-    
+
   //   const startButton = screen.getByText('Start');
   //   fireEvent.click(startButton);
-    
+
   //   const moleBox = screen.getAllByText('Mole')[0];
   //   fireEvent.click(moleBox);
 

@@ -1,1 +1,4 @@
-export interface IInformationBar { userName: string; difficultyLevel: string}
+export interface IInformationBar {
+  userName: string;
+  difficultyLevel: string;
+}

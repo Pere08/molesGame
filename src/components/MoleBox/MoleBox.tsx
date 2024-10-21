@@ -1,20 +1,16 @@
-import { useEffect, useState } from "react";
-import { fetchDiglettImage } from "../../services/pokeService";
-import { IMoleBox } from "./MoleBox.props";
+import { useEffect, useState } from 'react';
+import { fetchDiglettImage } from '../../services/pokeService';
+import { IMoleBox } from './MoleBox.props';
 
-const MoleBox = ({
-  show,
-  setNumPoints,
-  pointsByDifficulty,
-}: IMoleBox ) => {
-  const [diglettImage, setDiglettImage] = useState<string>("");
+const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
+  const [diglettImage, setDiglettImage] = useState<string>('');
 
   useEffect(() => {
     const loadDiglettImage = async () => {
       try {
-        const cache = await caches.open("images-cache");
+        const cache = await caches.open('images-cache');
         const cachedResponse = await cache.match(
-          "https://pokeapi.co/media/sprites/pokemon/50.png"
+          'https://pokeapi.co/media/sprites/pokemon/50.png',
         );
 
         if (cachedResponse) {
@@ -25,12 +21,12 @@ const MoleBox = ({
           setDiglettImage(image);
           const response = await fetch(image);
           cache.put(
-            "https://pokeapi.co/media/sprites/pokemon/50.png",
-            response
+            'https://pokeapi.co/media/sprites/pokemon/50.png',
+            response,
           );
         }
       } catch (error) {
-        console.error("Error loading Diglett image:", error);
+        console.error('Error loading Diglett image:', error);
       }
     };
 

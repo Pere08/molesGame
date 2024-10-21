@@ -6,7 +6,9 @@ describe('InformationBar', () => {
     const userName = 'John Doe';
     const difficultyLevel = 'easy';
 
-    render(<InformationBar userName={userName} difficultyLevel={difficultyLevel} />);
+    render(
+      <InformationBar userName={userName} difficultyLevel={difficultyLevel} />,
+    );
 
     const userNameElement = screen.getByText(userName);
     expect(userNameElement).toBeInTheDocument();
@@ -16,7 +18,9 @@ describe('InformationBar', () => {
     const userName = 'Jane Doe';
     const difficultyLevel = 'hard';
 
-    render(<InformationBar userName={userName} difficultyLevel={difficultyLevel} />);
+    render(
+      <InformationBar userName={userName} difficultyLevel={difficultyLevel} />,
+    );
 
     const difficultyElement = screen.getByText(difficultyLevel);
     expect(difficultyElement).toBeInTheDocument();
@@ -26,7 +30,9 @@ describe('InformationBar', () => {
     const userName = 'Alice';
     const difficultyLevel = 'medium';
 
-    render(<InformationBar userName={userName} difficultyLevel={difficultyLevel} />);
+    render(
+      <InformationBar userName={userName} difficultyLevel={difficultyLevel} />,
+    );
 
     expect(screen.getByText(userName)).toBeInTheDocument();
     expect(screen.getByText(difficultyLevel)).toBeInTheDocument();

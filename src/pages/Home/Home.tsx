@@ -1,22 +1,23 @@
-import { useState, useEffect } from "react";
-import ChooseDifficulty from "../../components/ChooseDifficulty/ChooseDifficulty";
-import UserNameInput from "../../components/UserNameInput/UserNameInput";
-import { useNavigate } from "react-router-dom";
-import "./Home.scss"
+import { useState, useEffect } from 'react';
+import ChooseDifficulty from '../../components/ChooseDifficulty/ChooseDifficulty';
+import UserNameInput from '../../components/UserNameInput/UserNameInput';
+import { useNavigate } from 'react-router-dom';
+import './Home.scss';
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
 
 const Home = () => {
   const navigate = useNavigate();
-  
+
   const [userName, setUserName] = useState<string>('');
   const [difficulty, setDifficulty] = useState<Difficulty>('easy');
-  
+
   const difficultyList: Difficulty[] = ['easy', 'medium', 'hard'];
 
   useEffect(() => {
-    const storedUserName = localStorage.getItem("userName") || "";
-    const storedDifficulty = (localStorage.getItem("difficulty") as Difficulty) || 'easy';
+    const storedUserName = localStorage.getItem('userName') || '';
+    const storedDifficulty =
+      (localStorage.getItem('difficulty') as Difficulty) || 'easy';
     setUserName(storedUserName);
     setDifficulty(storedDifficulty);
   }, []);
@@ -34,7 +35,7 @@ const Home = () => {
   }, [difficulty]);
 
   const onSubmit = () => {
-    navigate("/game");
+    navigate('/game');
   };
 
   return (
@@ -44,10 +45,13 @@ const Home = () => {
         <UserNameInput defaultValue={userName} setUserName={setUserName} />
       </div>
       <div className="choose-difficulty" data-testid="difficulty-choice">
-        <ChooseDifficulty difficultyList={difficultyList} setDifficulty={setDifficulty} />
+        <ChooseDifficulty
+          difficultyList={difficultyList}
+          setDifficulty={setDifficulty}
+        />
       </div>
       <div className="start-button">
-        <button 
+        <button
           data-testid="start-button"
           disabled={!userName || !difficulty}
           onClick={onSubmit}
