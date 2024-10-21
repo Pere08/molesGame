@@ -22,7 +22,7 @@ export default [
       'node_modules/*',
       'src/__test__/config',
       '*sw.js',
-      'dist/*'
+      'dist/*',
     ],
   },
   {
@@ -44,7 +44,10 @@ export default [
     rules: {
       ...typescriptEslintPlugin.configs.recommended.rules, // Reglas de TypeScript
       ...reactHooks.configs.recommended.rules, // Reglas de React Hooks
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
       ...prettierConfig.rules, // Reglas de Prettier para mantener formato de código
     },
   },
