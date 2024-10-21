@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import InformationBar from "../components/InformationBar/InformationBar";
 import ShowPoints from "../components/ShowPoints/ShowPoints";
 import MoleBox from "../components/MoleBox/MoleBox";
-import { useMoleBoxToggler } from "../../src/hooks/useMoleBoxToggler"; // Importa el nuevo hook
+import { useMoleBoxToggler } from "../../src/hooks/useMoleBoxToggler";
 import { Difficulty } from "./Home";
+import { difficultyParameters } from "../utils/gameParameters";
+import ActionButton from "../components/ActionButton/ActionButton";
 
 type moleBosxes = [boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean];
 
@@ -14,22 +16,9 @@ const Game = () => {
   const currentName = localStorage.getItem("userName") ?? "";
   const [isToggling, setIsToggling] = useState(false);
 
-  const difficultyParameters = {
-    easy: {
-      time: 1000,
-      points: 10,
-    },
-    medium: {
-      time: 750,
-      points: 20,
-    },
-    hard: {
-      time: 500,
-      points: 30,
-    },
-  };
+  const togglingState = useMemo(() => isToggling, [isToggling]);
 
-  useMoleBoxToggler(isToggling, currentDifficulty, setMoleBoxes);
+  useMoleBoxToggler(togglingState, currentDifficulty, setMoleBoxes);
 
   const stopToggling = () => {
     setIsToggling(false);
@@ -54,8 +43,7 @@ const Game = () => {
           />
         ))}
       </div>
-      <button onClick={handleStart}>Comenzar Alternancia</button>
-      <button onClick={stopToggling}>Detener Alternancia</button>
+      <ActionButton togglingState={togglingState} stop={stopToggling} start={handleStart}/>
     </div>
   );
 };

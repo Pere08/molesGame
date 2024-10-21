@@ -1,5 +1,6 @@
 import { useEffect, useCallback } from "react";
 import { Difficulty } from "../pages/Home";
+import { difficultyParameters } from "../utils/gameParameters";
 
 type moleBoxes = [boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean];
 
@@ -8,12 +9,6 @@ export const useMoleBoxToggler = (
   currentDifficulty: string,
   setMoleBoxes: React.Dispatch<React.SetStateAction<moleBoxes>>,
 ) => {
-  const difficultyParameters = {
-    easy: { time: 1000 },
-    medium: { time: 750 },
-    hard: { time: 500 },
-  };
-
   const toggleMoleBoxes = useCallback(() => {
     setMoleBoxes((prev) => {
       const existSomeTrue = prev.some((val) => val);
