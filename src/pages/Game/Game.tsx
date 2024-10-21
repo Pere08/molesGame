@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import InformationBar from "../../components/InformationBar/InformationBar";
 import ShowPoints from "../../components/ShowPoints/ShowPoints";
 import MoleBox from "../../components/MoleBox/MoleBox";
@@ -6,6 +6,7 @@ import { useMoleBoxToggler } from "../../hooks/useMoleBoxToggler";
 import { Difficulty } from "../Home/Home";
 import { difficultyParameters } from "../../utils/gameParameters";
 import ActionButton from "../../components/ActionButton/ActionButton";
+import CountDown from "../../components/Timer/CountDown";
 
 type moleBosxes = [boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean];
 
@@ -20,19 +21,23 @@ const Game = () => {
 
   useMoleBoxToggler(togglingState, currentDifficulty, setMoleBoxes);
 
-  const stopToggling = () => {
+  const stopToggling = useCallback(() => {
     setIsToggling(false);
     setMoleBoxes([false, false, false, false, false, false, false, false, false]);
-  };
+  }, []);
 
   const handleStart = () => {
     setIsToggling(true);
   };
 
+
   return (
     <div>
       <InformationBar userName={currentName} difficultyLevel={currentDifficulty} />
-      <ShowPoints numPoints={numPoints} />
+      <div>
+        <ShowPoints numPoints={numPoints} />
+        <CountDown isActive={togglingState} onTimerEnd={stopToggling} initialTime={5000}/>
+      </div>
       <div className="game-box">
         {moleBoxes.map((box, index) => (
           <MoleBox
