@@ -1,1 +1,3 @@
-export interface IShowPoints  { numPoints: number }
+export interface IShowPoints {
+  numPoints: number;
+}

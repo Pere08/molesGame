@@ -7,7 +7,7 @@ describe('DifficultyButton', () => {
     const mockOnClick = vi.fn();
 
     render(<DifficultyButton name={buttonName} onClick={mockOnClick} />);
-    
+
     const button = screen.getByRole('button', { name: buttonName });
     expect(button).toBeInTheDocument();
     expect(button).toHaveTextContent(buttonName);
@@ -18,10 +18,10 @@ describe('DifficultyButton', () => {
     const mockOnClick = vi.fn();
 
     render(<DifficultyButton name={buttonName} onClick={mockOnClick} />);
-    
+
     const button = screen.getByRole('button', { name: buttonName });
     fireEvent.click(button);
-    
+
     expect(mockOnClick).toHaveBeenCalledWith(buttonName);
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });

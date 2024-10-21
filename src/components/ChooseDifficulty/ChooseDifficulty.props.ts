@@ -1,6 +1,6 @@
-import { Difficulty } from "../../pages/Home/Home";
+import { Difficulty } from '../../pages/Home/Home';
 
-export interface IChooseDifficulty  {
+export interface IChooseDifficulty {
   setDifficulty: (value: Difficulty) => void;
   difficultyList: string[];
 }

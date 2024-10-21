@@ -10,7 +10,7 @@ const CountDown = ({ initialTime, isActive, onTimerEnd }: ICountDown) => {
     const seconds = String(totalSeconds % 60).padStart(2, '0');
     const miliseconds = String(ms % 1000).padStart(3, '0');
     return `${minutes}:${seconds}:${miliseconds}`;
-  };  
+  };
 
   return <div>{formatTime(milliseconds)}</div>;
 };

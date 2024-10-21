@@ -1,5 +1,5 @@
 export interface ICountDown {
-    initialTime: number;
-    isActive: boolean;
-    onTimerEnd: () => void;
+  initialTime: number;
+  isActive: boolean;
+  onTimerEnd: () => void;
 }

@@ -1,10 +1,13 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter, useNavigate } from 'react-router-dom'; 
+import { MemoryRouter, useNavigate } from 'react-router-dom';
 import Home from './Home';
 import { vi } from 'vitest';
 
 vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  const actual =
+    await vi.importActual<typeof import('react-router-dom')>(
+      'react-router-dom',
+    );
   return {
     ...actual,
     useNavigate: vi.fn(),
@@ -12,16 +15,15 @@ vi.mock('react-router-dom', async () => {
 });
 
 describe('Home', () => {
-
   it('renders the Home component with all elements', () => {
     render(
       <MemoryRouter>
         <Home />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
-    
+
     expect(screen.getByText("Mole's Game")).toBeInTheDocument();
-    
+
     expect(screen.getByTestId('username-input')).toBeInTheDocument();
     expect(screen.getByTestId('difficulty-choice')).toBeInTheDocument();
     expect(screen.getByTestId('start-button')).toBeInTheDocument();
@@ -34,9 +36,9 @@ describe('Home', () => {
     render(
       <MemoryRouter>
         <Home />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
-    
+
     expect(screen.getByDisplayValue('John Doe')).toBeInTheDocument();
     expect(screen.getByText('hard')).toBeInTheDocument();
   });
@@ -45,10 +47,12 @@ describe('Home', () => {
     render(
       <MemoryRouter>
         <Home />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    const usernameInput = screen.getByTestId('username-input').querySelector('input');
+    const usernameInput = screen
+      .getByTestId('username-input')
+      .querySelector('input');
     fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
 
     expect(localStorage.getItem('userName')).toBe('Alice');
@@ -58,7 +62,7 @@ describe('Home', () => {
     render(
       <MemoryRouter>
         <Home />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const hardButton = screen.getByText('hard');
@@ -71,10 +75,12 @@ describe('Home', () => {
     render(
       <MemoryRouter>
         <Home />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    const usernameInput = screen.getByTestId('username-input').querySelector('input');
+    const usernameInput = screen
+      .getByTestId('username-input')
+      .querySelector('input');
     fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
 
     const startButton = screen.getByTestId('start-button');
@@ -88,10 +94,12 @@ describe('Home', () => {
     render(
       <MemoryRouter>
         <Home />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    const usernameInput = screen.getByTestId('username-input').querySelector('input');
+    const usernameInput = screen
+      .getByTestId('username-input')
+      .querySelector('input');
     fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
 
     const startButton = screen.getByTestId('start-button');

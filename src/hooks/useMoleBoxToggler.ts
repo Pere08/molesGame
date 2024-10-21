@@ -1,8 +1,18 @@
-import { useEffect, useCallback } from "react";
-import { Difficulty } from "../pages/Home/Home";
-import { difficultyParameters } from "../utils/gameParameters";
+import { useEffect, useCallback } from 'react';
+import { Difficulty } from '../pages/Home/Home';
+import { difficultyParameters } from '../utils/gameParameters';
 
-type moleBoxes = [boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean];
+type moleBoxes = [
+  boolean,
+  boolean,
+  boolean,
+  boolean,
+  boolean,
+  boolean,
+  boolean,
+  boolean,
+  boolean,
+];
 
 export const useMoleBoxToggler = (
   isToggling: boolean,
@@ -17,7 +27,9 @@ export const useMoleBoxToggler = (
         return [false, false, false, false, false, false, false, false, false];
       } else {
         const randomIndex = Math.floor(Math.random() * 9);
-        const newMoleBoxes = prev.map((_, index) => (index === randomIndex ? true : false)) as moleBoxes;
+        const newMoleBoxes = prev.map((_, index) =>
+          index === randomIndex ? true : false,
+        ) as moleBoxes;
         return newMoleBoxes;
       }
     });
@@ -27,7 +39,10 @@ export const useMoleBoxToggler = (
     let interval: ReturnType<typeof setInterval> | null = null;
 
     if (isToggling) {
-      interval = setInterval(toggleMoleBoxes, difficultyParameters[currentDifficulty as Difficulty].time);
+      interval = setInterval(
+        toggleMoleBoxes,
+        difficultyParameters[currentDifficulty as Difficulty].time,
+      );
     }
 
     return () => {

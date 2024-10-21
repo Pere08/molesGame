@@ -6,15 +6,25 @@ describe('ChooseDifficulty', () => {
 
   it('should render the correct number of difficulty buttons', () => {
     const setDifficulty = vi.fn();
-    render(<ChooseDifficulty difficultyList={difficultyList} setDifficulty={setDifficulty} />);
+    render(
+      <ChooseDifficulty
+        difficultyList={difficultyList}
+        setDifficulty={setDifficulty}
+      />,
+    );
 
     const buttons = screen.getAllByRole('button');
     expect(buttons).toHaveLength(difficultyList.length);
   });
 
   it('should call setDifficulty with the correct value when a button is clicked', () => {
-    const setDifficulty = vi.fn(); 
-    render(<ChooseDifficulty difficultyList={difficultyList} setDifficulty={setDifficulty} />);
+    const setDifficulty = vi.fn();
+    render(
+      <ChooseDifficulty
+        difficultyList={difficultyList}
+        setDifficulty={setDifficulty}
+      />,
+    );
 
     const easyButton = screen.getByRole('button', { name: 'easy' });
     const mediumButton = screen.getByRole('button', { name: 'medium' });

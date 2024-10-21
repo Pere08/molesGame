@@ -1,5 +1,5 @@
-export interface IActionButton  {
-    togglingState: boolean
-    start: () => void
-    stop: () => void
-  }
+export interface IActionButton {
+  togglingState: boolean;
+  start: () => void;
+  stop: () => void;
+}

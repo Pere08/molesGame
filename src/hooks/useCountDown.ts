@@ -1,6 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
 
-const useCountDown = (initialTime: number, isActive: boolean, onTimerEnd: () => void) => {
+const useCountDown = (
+  initialTime: number,
+  isActive: boolean,
+  onTimerEnd: () => void,
+) => {
   const [milliseconds, setMilliseconds] = useState(initialTime);
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
   const hasEnded = useRef(false);
@@ -19,8 +23,8 @@ const useCountDown = (initialTime: number, isActive: boolean, onTimerEnd: () => 
         setMilliseconds((prev) => {
           if (prev <= 10) {
             clearInterval(id);
-            hasEnded.current = true; 
-            onTimerEnd(); 
+            hasEnded.current = true;
+            onTimerEnd();
             return 0;
           }
           return prev - 10;

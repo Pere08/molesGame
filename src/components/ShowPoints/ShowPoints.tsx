@@ -1,12 +1,7 @@
-import { IShowPoints } from "./ShowPoints.props";
+import { IShowPoints } from './ShowPoints.props';
 
-const ShowPoints = ({numPoints}: IShowPoints) => {
+const ShowPoints = ({ numPoints }: IShowPoints) => {
+  return <div className="show-points">{numPoints}</div>;
+};
 
-    return (
-      <div className="show-points">
-        {numPoints}
-      </div>
-    );
-  };
-  
 export default ShowPoints;
