@@ -12,27 +12,21 @@ const MoleBox = ({ show, setNumPoints, pointsByDifficulty }:
 
   useEffect(() => {
     const loadDiglettImage = async () => {
-      const storedImage = localStorage.getItem('diglettImage');
-      if (storedImage) {
-        setDiglettImage(storedImage);
-      } else {
-        try {
-          const cache = await caches.open('images-cache');
-          console.log('PERE CAHCHE ----> ', cache);
-          
-          const cachedResponse = await cache.match('https://pokeapi.co/media/sprites/pokemon/50.png');
+      try {
+        const cache = await caches.open('images-cache');
+        const cachedResponse = await cache.match('https://pokeapi.co/media/sprites/pokemon/50.png');
 
-          if (cachedResponse) {
-            const image = await cachedResponse.url;
-            setDiglettImage(image);
-          } else {
-            const image = await fetchDiglettImage();
-            setDiglettImage(image);
-            localStorage.setItem('diglettImage', image);
-          }
-        } catch (error) {
-          console.error('Error loading Diglett image:', error);
+        if (cachedResponse) {
+          const image = await cachedResponse.url; 
+          setDiglettImage(image);
+        } else {
+          const image = await fetchDiglettImage();
+          setDiglettImage(image);
+          const response = await fetch(image);
+          cache.put('https://pokeapi.co/media/sprites/pokemon/50.png', response);
         }
+      } catch (error) {
+        console.error('Error loading Diglett image:', error);
       }
     };
 

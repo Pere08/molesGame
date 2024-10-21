@@ -8,7 +8,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
-        globPatterns: ['**/*.{js,css,html,png,jpg,jpeg,svg,ico}'], // Define los tipos de archivos que deseas cachear
+        globPatterns: ['**/*.{js,css,html,png,jpg,jpeg,svg,ico}'],
       },
       manifest: {
         name: 'Moles Game PWA',
@@ -32,4 +32,9 @@ export default defineConfig({
       },
     }),
   ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './setupTests.ts',
+  },
 });
