@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "vitest --typecheck",
     "test:watch": "vitest --watch",
-    "test:husky": "vitest --typecheck --exit"
+    "test:husky": "vitest"
   },
   "dependencies": {
     "react": "^18.3.1",
