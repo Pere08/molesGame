@@ -3,7 +3,6 @@ import { MemoryRouter, useNavigate } from 'react-router-dom';
 import Home from './Home';
 import { vi } from 'vitest';
 
-// Mock parcial de `react-router-dom`, especialmente `useNavigate`
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
   return {
@@ -21,17 +20,14 @@ describe('Home', () => {
       </MemoryRouter>
     );
     
-    // Verificar si el título se muestra
     expect(screen.getByText("Mole's Game")).toBeInTheDocument();
     
-    // Verificar que los componentes se renderizan
     expect(screen.getByTestId('username-input')).toBeInTheDocument();
     expect(screen.getByTestId('difficulty-choice')).toBeInTheDocument();
     expect(screen.getByTestId('start-button')).toBeInTheDocument();
   });
 
   it('loads the username and difficulty from localStorage', () => {
-    // Configurar valores previos en localStorage
     localStorage.setItem('userName', 'John Doe');
     localStorage.setItem('difficulty', 'hard');
 
@@ -41,7 +37,6 @@ describe('Home', () => {
       </MemoryRouter>
     );
     
-    // Verificar que los valores del almacenamiento local se carguen correctamente
     expect(screen.getByDisplayValue('John Doe')).toBeInTheDocument();
     expect(screen.getByText('hard')).toBeInTheDocument();
   });
@@ -53,7 +48,6 @@ describe('Home', () => {
       </MemoryRouter>
     );
 
-    // Supongamos que UserNameInput tiene un input que podemos manipular
     const usernameInput = screen.getByTestId('username-input').querySelector('input');
     fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
 

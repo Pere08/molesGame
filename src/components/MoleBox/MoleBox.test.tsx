@@ -22,7 +22,7 @@ describe('MoleBox', () => {
 
     render(<MoleBox show={true} setNumPoints={setNumPointsMock} pointsByDifficulty={pointsByDifficulty} />);
 
-    const button = await screen.findByRole('button'); // Esperar que el botón se renderice
+    const button = await screen.findByRole('button');
     expect(button).toBeInTheDocument();
   });
 
