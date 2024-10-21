@@ -1,6 +1,12 @@
-const UserNameInput = ({setUserName}: {setUserName: (value: string) => void}) => {
+const UserNameInput = ({
+  defaultValue,
+  setUserName
+}: {
+    defaultValue: string;
+    setUserName: (value: string) => void}
+) => {
     return (
-      <input type="text" onChange={(name) => setUserName(name.target.value)}/>
+      <input type="text" defaultValue={defaultValue} onChange={(name) => setUserName(name.target.value)}/>
     );
   };
   
