@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest --typecheck",
-    "test:watch": "vitest --watch"
+    "test:watch": "vitest --watch",
+    "test:husky": "vitest --typecheck --exit"
   },
   "dependencies": {
     "react": "^18.3.1",
