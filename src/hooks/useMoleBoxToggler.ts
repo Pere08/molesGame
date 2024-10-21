@@ -17,14 +17,14 @@ export const useMoleBoxToggler = (
         return [false, false, false, false, false, false, false, false, false];
       } else {
         const randomIndex = Math.floor(Math.random() * 9);
-        const newMoleBoxes = prev.map((val, index) => (index === randomIndex ? true : false)) as moleBoxes;
+        const newMoleBoxes = prev.map((_, index) => (index === randomIndex ? true : false)) as moleBoxes;
         return newMoleBoxes;
       }
     });
   }, [setMoleBoxes]);
 
   useEffect(() => {
-    let interval: number | null = null;
+    let interval: ReturnType<typeof setInterval> | null = null;
 
     if (isToggling) {
       interval = setInterval(toggleMoleBoxes, difficultyParameters[currentDifficulty as Difficulty].time);
