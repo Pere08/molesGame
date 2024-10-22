@@ -24,8 +24,6 @@ export const loadPokemonImages = async () => {
 
       for (const image of images) {
         const response = await fetch(image);
-        console.log('images -> ', image);
-
         await cache.put(image, response);
       }
     }
@@ -40,8 +38,6 @@ export const loadCachedImage = async () => {
     const cachedResponses = await cache.matchAll();
 
     if (cachedResponses.length > 0) {
-      console.log('cachedResponses -> ', cachedResponses);
-
       const randomIndex = Math.floor(Math.random() * cachedResponses.length);
       const cachedResponse = cachedResponses[randomIndex];
       const blob = await cachedResponse.blob();
