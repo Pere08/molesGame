@@ -5,7 +5,7 @@ import { moleBoxes } from '../pages/Game/Game.props';
 import { useNavigate } from 'react-router-dom';
 
 export const useGame = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [startTimer, setStartTimer] = useState<boolean>(false);
   const [showCompleteGameModal, setCompleteGameModal] = useState(false);
@@ -38,12 +38,12 @@ export const useGame = () => {
 
   const handleReturnHome = () => {
     navigate('/');
-  }
+  };
 
   const handleFinishCountDown = () => {
     setCompleteGameModal(true);
-    stopToggling()
-  }
+    stopToggling();
+  };
 
   const toggleMoleBoxes = useCallback(() => {
     setMoleBoxes((prev) => {
@@ -93,6 +93,6 @@ export const useGame = () => {
     handleCompleteTimer,
     showCompleteGameModal,
     handleReturnHome,
-    handleFinishCountDown
+    handleFinishCountDown,
   };
 };

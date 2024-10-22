@@ -1,6 +1,5 @@
-
 export interface ICompleteGameModal {
-  points: number; 
+  points: number;
   playAgainFn: () => void;
   closeGameFn: () => void;
 }

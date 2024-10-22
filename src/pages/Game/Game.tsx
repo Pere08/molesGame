@@ -24,13 +24,18 @@ const Game = () => {
     handleCompleteTimer,
     showCompleteGameModal,
     handleReturnHome,
-    handleFinishCountDown
+    handleFinishCountDown,
   } = useGame();
 
   return (
     <div>
       <Timer startCountdown={startTimer} onComplete={handleCompleteTimer} />
-      <CompleteGameModal isVisible={showCompleteGameModal} points={numPoints} closeGameFn={handleReturnHome} playAgainFn={handleStartTimer}/> 
+      <CompleteGameModal
+        isVisible={showCompleteGameModal}
+        points={numPoints}
+        closeGameFn={handleReturnHome}
+        playAgainFn={handleStartTimer}
+      />
       <InformationBar
         userName={currentName}
         difficultyLevel={currentDifficulty}
