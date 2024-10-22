@@ -4,14 +4,16 @@ import { fetchPokemonImages } from './pokeService';
 describe('Pokemon Service', () => {
   describe('fetchPokemonImages', () => {
     it('should fetch images for a given count', async () => {
-      const mockResponse = { sprites: { front_default: 'http://example.com/image.png' } };
+      const mockResponse = {
+        sprites: { front_default: 'http://example.com/image.png' },
+      };
       global.fetch = vi.fn().mockResolvedValue({
         json: () => Promise.resolve(mockResponse),
       });
 
       const images = await fetchPokemonImages(3);
       expect(images.length).toBe(3);
-      images.forEach(image => {
+      images.forEach((image) => {
         expect(typeof image).toBe('string');
         expect(image).toMatch(/\.png$/); // Comprobar que la URL termine con .png
       });
