@@ -1,4 +1,4 @@
 export interface ITimer {
-    startCountdown: boolean;
-    onComplete: () => void;
+  startCountdown: boolean;
+  onComplete: () => void;
 }

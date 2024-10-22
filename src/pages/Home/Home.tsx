@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ChooseDifficulty from '../../components/ChooseDifficulty/ChooseDifficulty';
 import UserNameInput from '../../components/UserNameInput/UserNameInput';
 import { useNavigate } from 'react-router-dom';
-import './Home.scss';
+import './Home.css';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
 export type Difficulty = 'easy' | 'medium' | 'hard';

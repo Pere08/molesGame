@@ -1,5 +1,5 @@
 import { IInformationBar } from './InformationBar.props';
-import "./InformationBar.scss"
+import './InformationBar.css';
 
 const InformationBar = ({ userName, difficultyLevel }: IInformationBar) => {
   return (

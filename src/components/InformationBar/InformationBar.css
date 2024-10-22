@@ -1,0 +1,4 @@
+.information-bar {
+  display: flex;
+  justify-content: space-evenly;
+}

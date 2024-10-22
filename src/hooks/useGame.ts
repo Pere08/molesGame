@@ -76,6 +76,6 @@ export const useGame = () => {
     stopToggling,
     startTimer,
     handleStartTimer,
-    handleCompleteTimer
+    handleCompleteTimer,
   };
 };
