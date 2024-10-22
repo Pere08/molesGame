@@ -4,7 +4,7 @@ export const fetchPokemonImages = async (count: number): Promise<string[]> => {
   for (let i = 0; i < count; i++) {
     const randomId = Math.floor(Math.random() * 151) + 1;
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      `https://pokeapi.co/api/v2/pokemon/${randomId}`,
     );
     const data = await response.json();
     pokemonImages.push(data.sprites.front_default);
@@ -16,16 +16,16 @@ export const fetchPokemonImages = async (count: number): Promise<string[]> => {
 export const loadPokemonImages = async () => {
   try {
     const cache = await caches.open('images-cache');
-    
+
     const cachedResponses = await cache.matchAll();
-    
+
     if (cachedResponses.length === 0) {
       const images = await fetchPokemonImages(10);
 
       for (const image of images) {
         const response = await fetch(image);
         console.log('images -> ', image);
-        
+
         await cache.put(image, response);
       }
     }
@@ -44,10 +44,10 @@ export const loadCachedImage = async () => {
 
       const randomIndex = Math.floor(Math.random() * cachedResponses.length);
       const cachedResponse = cachedResponses[randomIndex];
-      const blob = await cachedResponse.blob(); 
+      const blob = await cachedResponse.blob();
       const cachedImage = URL.createObjectURL(blob);
 
-      return cachedImage; 
+      return cachedImage;
     } else {
       console.error('No cached images found');
     }
