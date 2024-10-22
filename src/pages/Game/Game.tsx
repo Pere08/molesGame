@@ -6,8 +6,11 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 import { useGame } from '../../hooks/useGame'; // Importa el nuevo hook
 import { difficultyParameters } from '../../utils/gameParameters';
 import { Difficulty } from '../Home/Home';
+import "./Game.scss"
+import Timer from '../../components/Timer/Timer';
 
 const Game = () => {
+
   const {
     numPoints,
     setNumPoints,
@@ -16,7 +19,9 @@ const Game = () => {
     currentName,
     togglingState,
     stopToggling,
-    handleStart,
+    startTimer,
+    handleStartTimer,
+    handleCompleteTimer
   } = useGame();
 
   return (
@@ -25,7 +30,8 @@ const Game = () => {
         userName={currentName}
         difficultyLevel={currentDifficulty}
       />
-      <div>
+      <Timer startCountdown={startTimer} onComplete={handleCompleteTimer}/>
+      <div className='points-and-countdown'>
         <ShowPoints numPoints={numPoints} />
         <CountDown
           isActive={togglingState}
@@ -56,7 +62,7 @@ const Game = () => {
           <CustomButton
             className="start-button"
             name="Start"
-            onClick={handleStart}
+            onClick={handleStartTimer}
           />
         )}
       </div>

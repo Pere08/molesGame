@@ -30,7 +30,9 @@ const useCountDown = (
           return prev - 10;
         });
       }, 10);
+
       setTimerId(id);
+
     } else if (timerId) {
       clearInterval(timerId);
       setTimerId(null);
@@ -40,6 +42,7 @@ const useCountDown = (
     return () => {
       if (timerId) clearInterval(timerId);
     };
+    
   }, [isActive, milliseconds, onTimerEnd, timerId, initialTime]);
 
   return milliseconds;

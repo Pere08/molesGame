@@ -4,6 +4,7 @@ import { difficultyParameters } from '../utils/gameParameters';
 import { moleBoxes } from '../pages/Game/Game.props';
 
 export const useGame = () => {
+  const [startTimer, setStartTimer] = useState<boolean>(false);
   const [numPoints, setNumPoints] = useState<number>(0);
   const [moleBoxes, setMoleBoxes] = useState<moleBoxes>(Array(9).fill(false));
   const currentDifficulty = localStorage.getItem('difficulty') ?? 'easy';
@@ -19,6 +20,15 @@ export const useGame = () => {
 
   const handleStart = () => {
     setIsToggling(true);
+  };
+
+  const handleStartTimer = () => {
+    setStartTimer(true);
+  };
+
+  const handleCompleteTimer = () => {
+    setStartTimer(false);
+    handleStart();
   };
 
   const toggleMoleBoxes = useCallback(() => {
@@ -64,6 +74,8 @@ export const useGame = () => {
     isToggling,
     togglingState,
     stopToggling,
-    handleStart,
+    startTimer,
+    handleStartTimer,
+    handleCompleteTimer
   };
 };

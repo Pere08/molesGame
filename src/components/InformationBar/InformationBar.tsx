@@ -1,10 +1,11 @@
 import { IInformationBar } from './InformationBar.props';
+import "./InformationBar.scss"
 
 const InformationBar = ({ userName, difficultyLevel }: IInformationBar) => {
   return (
     <div className="information-bar">
-      <div className="user-name-info">{userName}</div>
-      <div className="difficulty-selected">{difficultyLevel}</div>
+      <div className="user-name-info">Player: {userName}</div>
+      <div className="difficulty-selected">Level: {difficultyLevel}</div>
     </div>
   );
 };

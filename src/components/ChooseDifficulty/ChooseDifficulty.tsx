@@ -1,6 +1,7 @@
 import { Difficulty } from '../../pages/Home/Home';
 import CustomButton from '../CustomButton/CustomButton';
 import { IChooseDifficulty } from './ChooseDifficulty.props';
+import "./ChooseDifficulty.scss";
 
 const ChooseDifficulty = ({
   difficultyList,

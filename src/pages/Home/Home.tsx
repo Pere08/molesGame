@@ -36,18 +36,17 @@ const Home = () => {
   }, [difficulty]);
 
   const onSubmit = () => {
-    console.log('CLICKED');
-
-    navigate('/game');
-
-    if (userName && difficulty) {
-      navigate('/game');
-    }
+    setTimeout(() => {
+      if (userName && difficulty) {
+        navigate('/game');
+      }
+    }, 1000);
   };
 
   return (
     <div className="home">
       <h1 className="title">Mole's Game</h1>
+      <h3 className="title">Pokemon version</h3>
       <div className="input-username" data-testid="username-input">
         <UserNameInput defaultValue={userName} setUserName={setUserName} />
       </div>

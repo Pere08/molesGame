@@ -23,7 +23,7 @@ const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
           <img src={pokemonImage} alt="Random Pokémon" />
         </button>
       ) : (
-        <div>nop</div>
+        <div>HOLA</div>
       )}
     </div>
   );
