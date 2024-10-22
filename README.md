@@ -15,6 +15,7 @@ This project includes:
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone <repository-url>
    cd molesgame
@@ -43,6 +44,7 @@ The following scripts are available to assist with development:
 This project uses **Vitest** for testing. You can write tests in the `__tests__` directory. Ensure that your tests are running correctly by using the following commands:
 
 - **Run all tests**:
+
   ```bash
   npm run test
   ```
