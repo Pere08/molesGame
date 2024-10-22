@@ -1,36 +1,16 @@
 import { useEffect, useState } from 'react';
-import { fetchDiglettImage } from '../../services/pokeService';
 import { IMoleBox } from './MoleBox.props';
+import { loadCachedImage } from '../../services/pokeService';
 
 const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
-  const [diglettImage, setDiglettImage] = useState<string>('');
+  const [pokemonImage, setPokemonImage] = useState<string>('');
 
   useEffect(() => {
-    const loadDiglettImage = async () => {
-      try {
-        const cache = await caches.open('images-cache');
-        const cachedResponse = await cache.match(
-          'https://pokeapi.co/media/sprites/pokemon/50.png',
-        );
-
-        if (cachedResponse) {
-          const image = await cachedResponse.url;
-          setDiglettImage(image);
-        } else {
-          const image = await fetchDiglettImage();
-          setDiglettImage(image);
-          const response = await fetch(image);
-          cache.put(
-            'https://pokeapi.co/media/sprites/pokemon/50.png',
-            response,
-          );
-        }
-      } catch (error) {
-        console.error('Error loading Diglett image:', error);
+    loadCachedImage().then(cachedImage => {
+      if(cachedImage){
+        setPokemonImage(cachedImage);
       }
-    };
-
-    loadDiglettImage();
+    })
   }, []);
 
   return (
@@ -40,7 +20,7 @@ const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
           type="button"
           onClick={() => setNumPoints((prev) => prev + pointsByDifficulty)}
         >
-          <img src={diglettImage} alt="Diglett" />
+          <img src={pokemonImage} alt="Random Pokémon" />
         </button>
       ) : (
         <div>nop</div>
