@@ -8,6 +8,7 @@ import { difficultyParameters } from '../../utils/gameParameters';
 import { Difficulty } from '../Home/Home';
 import './Game.css';
 import Timer from '../../components/Timer/Timer';
+import CompleteGameModal from '../../components/CompleteGameModal/CompleteGameModal';
 
 const Game = () => {
   const {
@@ -21,20 +22,24 @@ const Game = () => {
     startTimer,
     handleStartTimer,
     handleCompleteTimer,
+    showCompleteGameModal,
+    handleReturnHome,
+    handleFinishCountDown
   } = useGame();
 
   return (
     <div>
+      <Timer startCountdown={startTimer} onComplete={handleCompleteTimer} />
+      <CompleteGameModal isVisible={showCompleteGameModal} points={numPoints} closeGameFn={handleReturnHome} playAgainFn={handleStartTimer}/> 
       <InformationBar
         userName={currentName}
         difficultyLevel={currentDifficulty}
       />
-      <Timer startCountdown={startTimer} onComplete={handleCompleteTimer} />
       <div className="points-and-countdown">
         <ShowPoints numPoints={numPoints} />
         <CountDown
           isActive={togglingState}
-          onTimerEnd={stopToggling}
+          onTimerEnd={handleFinishCountDown}
           initialTime={30000}
         />
       </div>
