@@ -3,7 +3,10 @@ import './Timer.css';
 import { useCountdownTimer } from '../../hooks/useCountdownTimer';
 
 const Timer = ({ startCountdown, onComplete }: ITimer) => {
-  const { count, isVisible } = useCountdownTimer({ startCountdown, onComplete });
+  const { count, isVisible } = useCountdownTimer({
+    startCountdown,
+    onComplete,
+  });
 
   if (!isVisible) return null;
 

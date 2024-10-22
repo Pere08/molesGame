@@ -7,8 +7,6 @@ import { loadPokemonImages } from './services/pokeService';
 
 function App() {
   useEffect(() => {
-    console.log('HOLAAAA!');
-
     loadPokemonImages();
   }, []);
 
