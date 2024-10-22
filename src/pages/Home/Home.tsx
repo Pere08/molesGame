@@ -3,6 +3,7 @@ import ChooseDifficulty from '../../components/ChooseDifficulty/ChooseDifficulty
 import UserNameInput from '../../components/UserNameInput/UserNameInput';
 import { useNavigate } from 'react-router-dom';
 import './Home.scss';
+import CustomButton from '../../components/CustomButton/CustomButton';
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
 
@@ -35,7 +36,9 @@ const Home = () => {
   }, [difficulty]);
 
   const onSubmit = () => {
-    navigate('/game');
+    if(userName && difficulty) {
+      navigate('/game');
+    }
   };
 
   return (
@@ -51,13 +54,7 @@ const Home = () => {
         />
       </div>
       <div className="start-button">
-        <button
-          data-testid="start-button"
-          disabled={!userName || !difficulty}
-          onClick={onSubmit}
-        >
-          Iniciar
-        </button>
+        <CustomButton data-testid="start-button" className="play-button" name='Play' onClick={onSubmit}/>
       </div>
     </div>
   );

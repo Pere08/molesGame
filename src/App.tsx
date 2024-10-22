@@ -6,10 +6,9 @@ import Game from './pages/Game/Game';
 import { loadPokemonImages } from './services/pokeService';
 
 function App() {
-  
   useEffect(() => {
     loadPokemonImages();
-  }, []); 
+  }, []);
 
   return (
     <Router>

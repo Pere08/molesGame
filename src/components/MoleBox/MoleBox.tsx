@@ -6,11 +6,11 @@ const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
   const [pokemonImage, setPokemonImage] = useState<string>('');
 
   useEffect(() => {
-    loadCachedImage().then(cachedImage => {
-      if(cachedImage){
+    loadCachedImage().then((cachedImage) => {
+      if (cachedImage) {
         setPokemonImage(cachedImage);
       }
-    })
+    });
   }, []);
 
   return (

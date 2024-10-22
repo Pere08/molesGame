@@ -1,11 +1,8 @@
-import { ICustomButton } from "./CustomButton.props";
+import { ICustomButton } from './CustomButton.props';
 
-const CustomButton = ({ name, onClick }: ICustomButton) => {
+const CustomButton = ({ className, name, onClick }: ICustomButton) => {
   return (
-    <button
-      className="difficulty-button"
-      onClick={() => onClick(name)}
-    >
+    <button className={className} onClick={onClick}>
       {name}
     </button>
   );
