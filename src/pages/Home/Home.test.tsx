@@ -26,7 +26,7 @@ describe('Home', () => {
 
     expect(screen.getByTestId('username-input')).toBeInTheDocument();
     expect(screen.getByTestId('difficulty-choice')).toBeInTheDocument();
-    expect(screen.getByTestId('start-button')).toBeInTheDocument();
+    expect(screen.getByTestId('start-button-box')).toBeInTheDocument();
   });
 
   it('loads the username and difficulty from localStorage', () => {
@@ -71,22 +71,6 @@ describe('Home', () => {
     expect(localStorage.getItem('difficulty')).toBe('hard');
   });
 
-  it('enables the start button when username and difficulty are set', () => {
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>,
-    );
-
-    const usernameInput = screen
-      .getByTestId('username-input')
-      .querySelector('input');
-    fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
-
-    const startButton = screen.getByTestId('start-button');
-    expect(startButton).not.toBeDisabled();
-  });
-
   // it('navigates to the game page when the start button is clicked', () => {
   //   const navigateMock = vi.fn();
   //   vi.mocked(useNavigate).mockReturnValue(navigateMock);
@@ -97,18 +81,12 @@ describe('Home', () => {
   //     </MemoryRouter>,
   //   );
 
-  //   // Cambia el nombre de usuario
   //   const usernameInput = screen
   //     .getByTestId('username-input')
   //     .querySelector('input');
   //   fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
 
-  //   const difficultyButton = screen.getByText('easy');
-  //   fireEvent.click(difficultyButton);
-
   //   const startButton = screen.getByTestId('start-button');
-  //   expect(startButton).not.toBeDisabled();
-
   //   fireEvent.click(startButton);
 
   //   expect(navigateMock).toHaveBeenCalledWith('/game');

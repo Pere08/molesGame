@@ -20,6 +20,6 @@
 
     "types": ["vitest/globals"]
   },
-  "include": ["src", "vite.config.ts", "setupTests.ts", "tests"],
+  "include": ["src", "vite.config.ts", "setupTests.ts", "**/*.test.ts", "**/*.test.tsx"],
   "exclude": ["node_modules"]
 }

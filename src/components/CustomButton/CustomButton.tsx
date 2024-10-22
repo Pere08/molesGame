@@ -1,8 +1,8 @@
 import { ICustomButton } from './CustomButton.props';
 
-const CustomButton = ({ className, name, onClick }: ICustomButton) => {
+const CustomButton = ({testId, className, name, onClick }: ICustomButton) => {
   return (
-    <button className={className} onClick={onClick}>
+    <button data-testid={testId} className={className} onClick={onClick}>
       {name}
     </button>
   );

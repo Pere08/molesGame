@@ -18,6 +18,7 @@ describe('Game component', () => {
   };
 
   beforeEach(() => {
+    // @ts-expect-error: The 'vi' namespace is not recognized by TypeScript
     (useGame as vi.Mock).mockReturnValue(mockUseGame);
   });
 
@@ -54,6 +55,7 @@ describe('Game component', () => {
   });
 
   it('should display "Stop" button when game is active', () => {
+    // @ts-expect-error: The 'vi' namespace is not recognized by TypeScript
     (useGame as vi.Mock).mockReturnValue({
       ...mockUseGame,
       togglingState: true,
