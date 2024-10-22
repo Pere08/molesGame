@@ -18,12 +18,13 @@ export const loadPokemonImages = async () => {
     const cache = await caches.open('images-cache');
 
     const cachedResponses = await cache.matchAll();
+
     if (cachedResponses.length === 0) {
       const images = await fetchPokemonImages(10);
 
       for (const image of images) {
         const response = await fetch(image);
-        cache.put(image, response);
+        await cache.put(image, response);
       }
     }
   } catch (error) {
@@ -38,7 +39,10 @@ export const loadCachedImage = async () => {
 
     if (cachedResponses.length > 0) {
       const randomIndex = Math.floor(Math.random() * cachedResponses.length);
-      const cachedImage = cachedResponses[randomIndex].url;
+      const cachedResponse = cachedResponses[randomIndex];
+      const blob = await cachedResponse.blob();
+      const cachedImage = URL.createObjectURL(blob);
+
       return cachedImage;
     } else {
       console.error('No cached images found');

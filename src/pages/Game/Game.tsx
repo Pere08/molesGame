@@ -30,7 +30,7 @@ const Game = () => {
         <CountDown
           isActive={togglingState}
           onTimerEnd={stopToggling}
-          initialTime={5000}
+          initialTime={30000}
         />
       </div>
       <div className="game-box">
