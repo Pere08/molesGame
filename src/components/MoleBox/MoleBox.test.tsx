@@ -1,29 +1,20 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import MoleBox from './MoleBox';
 import { vi } from 'vitest';
-import { fetchDiglettImage } from '../../services/pokeService';
 
 vi.mock('../../services/pokeService', () => ({
-  fetchDiglettImage: vi
-    .fn()
-    .mockResolvedValue('https://pokeapi.co/media/sprites/pokemon/50.png'),
+  loadCachedImage: vi.fn().mockResolvedValue('https://pokeapi.co/media/sprites/pokemon/50.png'),
 }));
 
 describe('MoleBox', () => {
-  const mockedFetchDiglettImage = fetchDiglettImage as jest.Mock;
   const setNumPointsMock = vi.fn();
   const pointsByDifficulty = 10;
 
   beforeEach(() => {
-    mockedFetchDiglettImage.mockResolvedValue(
-      'https://pokeapi.co/media/sprites/pokemon/50.png',
-    );
+    vi.clearAllMocks();
   });
 
   it('renders correctly when show is true', async () => {
-    const setNumPointsMock = vi.fn();
-    const pointsByDifficulty = 10;
-
     render(
       <MoleBox
         show={true}
@@ -34,12 +25,10 @@ describe('MoleBox', () => {
 
     const button = await screen.findByRole('button');
     expect(button).toBeInTheDocument();
+    expect(await screen.findByAltText('Random Pokémon')).toBeInTheDocument(); // Verificar que la imagen se haya cargado
   });
 
   it('does not render button when show is false', () => {
-    const setNumPointsMock = vi.fn();
-    const pointsByDifficulty = 10;
-
     render(
       <MoleBox
         show={false}

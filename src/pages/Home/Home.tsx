@@ -53,7 +53,7 @@ const Home = () => {
           setDifficulty={setDifficulty}
         />
       </div>
-      <div className="start-button">
+      <div data-testid="start-button" className="start-button">
         <CustomButton
           data-testid="start-button"
           className="play-button"

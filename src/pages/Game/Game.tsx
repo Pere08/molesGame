@@ -46,13 +46,19 @@ const Game = () => {
         ))}
       </div>
       <div>
-        {
-          togglingState ? (
-            <CustomButton className='stop-button' name='Stop' onClick={stopToggling}/>
-          ): (
-            <CustomButton className='start-button' name='Start' onClick={handleStart}/>
-          )
-        }
+        {togglingState ? (
+          <CustomButton
+            className="stop-button"
+            name="Stop"
+            onClick={stopToggling}
+          />
+        ) : (
+          <CustomButton
+            className="start-button"
+            name="Start"
+            onClick={handleStart}
+          />
+        )}
       </div>
     </div>
   );
