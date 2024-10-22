@@ -1,8 +1,8 @@
 import InformationBar from '../../components/InformationBar/InformationBar';
 import ShowPoints from '../../components/ShowPoints/ShowPoints';
 import MoleBox from '../../components/MoleBox/MoleBox';
-import ActionButton from '../../components/ActionButton/ActionButton';
 import CountDown from '../../components/CountDown/CountDown';
+import CustomButton from '../../components/CustomButton/CustomButton';
 import { useGame } from '../../hooks/useGame'; // Importa el nuevo hook
 import { difficultyParameters } from '../../utils/gameParameters';
 import { Difficulty } from '../Home/Home';
@@ -45,11 +45,21 @@ const Game = () => {
           />
         ))}
       </div>
-      <ActionButton
-        togglingState={togglingState}
-        stop={stopToggling}
-        start={handleStart}
-      />
+      <div>
+        {togglingState ? (
+          <CustomButton
+            className="stop-button"
+            name="Stop"
+            onClick={stopToggling}
+          />
+        ) : (
+          <CustomButton
+            className="start-button"
+            name="Start"
+            onClick={handleStart}
+          />
+        )}
+      </div>
     </div>
   );
 };

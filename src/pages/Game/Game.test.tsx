@@ -1,97 +1,71 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import Game from './Game';
-import { IInformationBar } from '../../components/InformationBar/InformationBar.props';
-import { IShowPoints } from '../../components/ShowPoints/ShowPoints.props';
-import { IMoleBox } from '../../components/MoleBox/MoleBox.props';
-import { IActionButton } from '../../components/ActionButton/ActionButton.props';
-import { vi } from 'vitest';
+import { useGame } from '../../hooks/useGame';
 
-vi.mock('../../components/InformationBar/InformationBar', () => ({
-  default: ({ userName, difficultyLevel }: IInformationBar) => (
-    <div>
-      <div>{userName}</div>
-      <div>{difficultyLevel}</div>
-    </div>
-  ),
-}));
+vi.mock('../../hooks/useGame');
 
-vi.mock('../../components/ShowPoints/ShowPoints', () => ({
-  default: ({ numPoints }: IShowPoints) => <div>{numPoints}</div>,
-}));
+describe('Game component', () => {
+  const mockUseGame = {
+    numPoints: 0,
+    setNumPoints: vi.fn(),
+    moleBoxes: [true, false, true],
+    currentDifficulty: 'easy',
+    currentName: 'Player',
+    togglingState: false,
+    stopToggling: vi.fn(),
+    handleStart: vi.fn(),
+  };
 
-vi.mock('../../components/MoleBox/MoleBox', () => ({
-  default: ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => (
-    <button
-      onClick={() => setNumPoints((prev) => prev + pointsByDifficulty)}
-      style={{ display: show ? 'block' : 'none' }}
-    >
-      Mole
-    </button>
-  ),
-}));
-
-vi.mock('../../components/ActionButton/ActionButton', () => ({
-  default: ({ stop, start }: IActionButton) => (
-    <div>
-      <button onClick={start}>Start</button>
-      <button onClick={stop}>Stop</button>
-    </div>
-  ),
-}));
-
-describe('Game', () => {
   beforeEach(() => {
-    localStorage.setItem('difficulty', 'easy');
-    localStorage.setItem('userName', 'John Doe');
+    // @ts-expect-error: The 'vi' namespace is not recognized by TypeScript
+    (useGame as vi.Mock).mockReturnValue(mockUseGame);
   });
 
-  it('renders InformationBar with username and difficulty level', () => {
+  it('should render the user name and difficulty level', () => {
     render(<Game />);
 
-    expect(screen.getByText('John Doe')).toBeInTheDocument();
+    expect(screen.getByText('Player')).toBeInTheDocument();
     expect(screen.getByText('easy')).toBeInTheDocument();
   });
 
-  it('renders ShowPoints with initial points', () => {
+  it('should render the correct number of MoleBox components', () => {
     render(<Game />);
 
-    expect(screen.getByText('0')).toBeInTheDocument();
+    const moleBoxes = screen.getAllByRole('button');
+    expect(moleBoxes).toHaveLength(mockUseGame.moleBoxes.length);
   });
 
-  it('starts toggling and shows mole boxes', () => {
+  it('should call setNumPoints when MoleBox is clicked', () => {
+    render(<Game />);
+
+    const moleBoxes = screen.getAllByRole('button');
+    fireEvent.click(moleBoxes[0]);
+
+    expect(mockUseGame.setNumPoints).toHaveBeenCalled();
+  });
+
+  it('should display "Start" button when game is not active', () => {
     render(<Game />);
 
     const startButton = screen.getByText('Start');
+    expect(startButton).toBeInTheDocument();
     fireEvent.click(startButton);
-
-    const moleBoxes = screen.getAllByText('Mole');
-    expect(moleBoxes.length).toBe(9);
+    expect(mockUseGame.handleStart).toHaveBeenCalledTimes(1);
   });
 
-  // it('stops toggling and hides mole boxes', () => {
-  //   render(<Game />);
+  it('should display "Stop" button when game is active', () => {
+    // @ts-expect-error: The 'vi' namespace is not recognized by TypeScript
+    (useGame as vi.Mock).mockReturnValue({
+      ...mockUseGame,
+      togglingState: true,
+    });
 
-  //   const startButton = screen.getByText('Start');
-  //   fireEvent.click(startButton);
+    render(<Game />);
 
-  //   const stopButton = screen.getByText('Stop');
-  //   fireEvent.click(stopButton);
-
-  //   const moleBoxes = screen.queryAllByText('Mole');
-  //   expect(moleBoxes.length).toBe(0);
-  // });
-
-  // it('increments numPoints when mole is clicked', async () => {
-  //   render(<Game />);
-
-  //   const startButton = screen.getByText('Start');
-  //   fireEvent.click(startButton);
-
-  //   const moleBox = screen.getAllByText('Mole')[0];
-  //   fireEvent.click(moleBox);
-
-  //   await waitFor(() => {
-  //     expect(screen.getByText('1')).toBeInTheDocument();
-  //   });
-  // });
+    const stopButton = screen.getByText('Stop');
+    expect(stopButton).toBeInTheDocument();
+    fireEvent.click(stopButton);
+    expect(mockUseGame.stopToggling).toHaveBeenCalledTimes(1);
+  });
 });
