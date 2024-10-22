@@ -9,7 +9,7 @@ describe('Game component', () => {
   const mockUseGame = {
     numPoints: 0,
     setNumPoints: vi.fn(),
-    moleBoxes: [true, false, true], 
+    moleBoxes: [true, false, true],
     currentDifficulty: 'easy',
     currentName: 'Player',
     togglingState: false,
@@ -31,7 +31,7 @@ describe('Game component', () => {
   it('should render the correct number of MoleBox components', () => {
     render(<Game />);
 
-    const moleBoxes = screen.getAllByRole('button'); 
+    const moleBoxes = screen.getAllByRole('button');
     expect(moleBoxes).toHaveLength(mockUseGame.moleBoxes.length);
   });
 
@@ -54,7 +54,10 @@ describe('Game component', () => {
   });
 
   it('should display "Stop" button when game is active', () => {
-    (useGame as vi.Mock).mockReturnValue({ ...mockUseGame, togglingState: true });
+    (useGame as vi.Mock).mockReturnValue({
+      ...mockUseGame,
+      togglingState: true,
+    });
 
     render(<Game />);
 

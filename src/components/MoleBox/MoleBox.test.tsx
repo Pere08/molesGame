@@ -3,7 +3,9 @@ import MoleBox from './MoleBox';
 import { vi } from 'vitest';
 
 vi.mock('../../services/pokeService', () => ({
-  loadCachedImage: vi.fn().mockResolvedValue('https://pokeapi.co/media/sprites/pokemon/50.png'),
+  loadCachedImage: vi
+    .fn()
+    .mockResolvedValue('https://pokeapi.co/media/sprites/pokemon/50.png'),
 }));
 
 describe('MoleBox', () => {

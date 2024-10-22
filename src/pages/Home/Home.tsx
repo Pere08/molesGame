@@ -36,6 +36,10 @@ const Home = () => {
   }, [difficulty]);
 
   const onSubmit = () => {
+    console.log('CLICKED');
+    
+    navigate('/game');
+
     if (userName && difficulty) {
       navigate('/game');
     }
