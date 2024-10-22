@@ -19,5 +19,5 @@
     "types": ["vite/client", "vitest/globals"],
     "esModuleInterop": true 
   },
-  "include": ["vite.config.ts", "**/*.test.ts", "**/*.test.tsx"]
+  "include": ["vite.config.ts"]
 }
