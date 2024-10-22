@@ -1,64 +1,23 @@
-import { useCallback, useMemo, useState } from 'react';
 import InformationBar from '../../components/InformationBar/InformationBar';
 import ShowPoints from '../../components/ShowPoints/ShowPoints';
 import MoleBox from '../../components/MoleBox/MoleBox';
-import { useMoleBoxToggler } from '../../hooks/useMoleBoxToggler';
-import { Difficulty } from '../Home/Home';
-import { difficultyParameters } from '../../utils/gameParameters';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import CountDown from '../../components/CountDown/CountDown';
-
-type moleBosxes = [
-  boolean,
-  boolean,
-  boolean,
-  boolean,
-  boolean,
-  boolean,
-  boolean,
-  boolean,
-  boolean,
-];
+import { useGame } from '../../hooks/useGame'; // Importa el nuevo hook
+import { difficultyParameters } from '../../utils/gameParameters';
+import { Difficulty } from '../Home/Home';
 
 const Game = () => {
-  const [numPoints, setNumPoints] = useState<number>(0);
-  const [moleBoxes, setMoleBoxes] = useState<moleBosxes>([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
-  const currentDifficulty = localStorage.getItem('difficulty') ?? 'easy';
-  const currentName = localStorage.getItem('userName') ?? '';
-  const [isToggling, setIsToggling] = useState(false);
-
-  const togglingState = useMemo(() => isToggling, [isToggling]);
-
-  useMoleBoxToggler(togglingState, currentDifficulty, setMoleBoxes);
-
-  const stopToggling = useCallback(() => {
-    setIsToggling(false);
-    setMoleBoxes([
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-    ]);
-  }, []);
-
-  const handleStart = () => {
-    setIsToggling(true);
-  };
+  const {
+    numPoints,
+    setNumPoints,
+    moleBoxes,
+    currentDifficulty,
+    currentName,
+    togglingState,
+    stopToggling,
+    handleStart,
+  } = useGame();
 
   return (
     <div>
