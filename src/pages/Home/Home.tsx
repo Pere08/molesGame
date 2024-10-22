@@ -36,7 +36,7 @@ const Home = () => {
   }, [difficulty]);
 
   const onSubmit = () => {
-    if(userName && difficulty) {
+    if (userName && difficulty) {
       navigate('/game');
     }
   };
@@ -54,7 +54,12 @@ const Home = () => {
         />
       </div>
       <div className="start-button">
-        <CustomButton data-testid="start-button" className="play-button" name='Play' onClick={onSubmit}/>
+        <CustomButton
+          data-testid="start-button"
+          className="play-button"
+          name="Play"
+          onClick={onSubmit}
+        />
       </div>
     </div>
   );

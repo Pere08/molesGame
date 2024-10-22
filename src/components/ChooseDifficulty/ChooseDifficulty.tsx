@@ -6,7 +6,6 @@ const ChooseDifficulty = ({
   difficultyList,
   setDifficulty,
 }: IChooseDifficulty) => {
-
   const difficultyHandler = (difficulty: Difficulty) => {
     setDifficulty(difficulty);
   };
@@ -14,8 +13,13 @@ const ChooseDifficulty = ({
   return (
     <div className="choose-difficulty-button-box">
       {difficultyList.map((name, index) => (
-        <CustomButton data-testid="difficulty-button" className="difficulty-button" key={`${name}-${index}`}
-        name={name} onClick={() => difficultyHandler(name as Difficulty)}/>
+        <CustomButton
+          data-testid="difficulty-button"
+          className="difficulty-button"
+          key={`${name}-${index}`}
+          name={name}
+          onClick={() => difficultyHandler(name as Difficulty)}
+        />
       ))}
     </div>
   );
