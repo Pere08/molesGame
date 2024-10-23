@@ -12,24 +12,26 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  height: 50vh;
+  height: 45vh;
 }
 
 .start-stop-button-container {
   height: 20vh;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .game-container {
   background-image: url('../../images/background_game.jpg');
   background-size: cover;
   background-position: center;
+  height: 100vh;
 }
 
 .action-button {
-  height: 60%;
+  height: 45%;
   width: 80%;
   font-weight: bold;
-  font-size: xx-large;
+  font-size: x-large;
 }
