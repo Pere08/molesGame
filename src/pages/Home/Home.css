@@ -47,6 +47,18 @@
   font-size: 5vw;
 }
 
+.error-msg-container {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
+
+.error-msg {
+  color: red;
+  font-weight: bold;
+  font-size: medium;
+}
+
 .start-button-box {
   height: 40vh;
   display: flex;

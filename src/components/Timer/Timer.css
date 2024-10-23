@@ -43,7 +43,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
-  width: 50%;
+  width: 40%;
   font-size: x-large;
   background-color: rgb(255, 223, 160);
 }

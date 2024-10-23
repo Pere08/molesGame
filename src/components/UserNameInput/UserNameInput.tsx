@@ -9,6 +9,7 @@ const UserNameInput = ({ defaultValue, setUserName }: IUserNameInput) => {
       defaultValue={defaultValue}
       onChange={(name) => setUserName(name.target.value)}
       placeholder="Insert your name"
+      required
     />
   );
 };

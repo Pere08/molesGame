@@ -2,7 +2,11 @@ import { Difficulty } from '../../pages/Home/Home';
 import CustomButton from '../CustomButton/CustomButton';
 import { IChooseDifficulty } from './ChooseDifficulty.props';
 import './ChooseDifficulty.css';
-import { allImages, difficutlyImg, firstCapitalLetter } from '../../utils/utils';
+import {
+  allImages,
+  difficutlyImg,
+  firstCapitalLetter,
+} from '../../utils/utils';
 import { cacheImage, getCachedImage } from '../../services/pokeService';
 import { useEffect, useState } from 'react';
 
@@ -19,8 +23,10 @@ const ChooseDifficulty = ({
   useEffect(() => {
     const arr = allImages.map((img) => {
       return cacheImage(img);
-    })
-    Promise.all(arr).then(() => {setIsImgLoaded(true)});
+    });
+    Promise.all(arr).then(() => {
+      setIsImgLoaded(true);
+    });
   }, []);
 
   useEffect(() => {
