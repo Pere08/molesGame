@@ -10,17 +10,19 @@ export type Difficulty = 'easy' | 'medium' | 'hard';
 const Home = () => {
   const navigate = useNavigate();
 
+  const [errorMsg, setErrorMsg] = useState({
+    username: false,
+    difficulty: false,
+  });
+
   const [userName, setUserName] = useState<string>('');
-  const [difficulty, setDifficulty] = useState<Difficulty>('easy');
+  const [difficulty, setDifficulty] = useState<Difficulty | undefined>();
 
   const difficultyList: Difficulty[] = ['easy', 'medium', 'hard'];
 
   useEffect(() => {
     const storedUserName = localStorage.getItem('userName') || '';
-    const storedDifficulty =
-      (localStorage.getItem('difficulty') as Difficulty) || 'easy';
     setUserName(storedUserName);
-    setDifficulty(storedDifficulty);
   }, []);
 
   useEffect(() => {
@@ -36,9 +38,19 @@ const Home = () => {
   }, [difficulty]);
 
   const onSubmit = () => {
+    setErrorMsg({ username: false, difficulty: false });
     setTimeout(() => {
       if (userName && difficulty) {
+        console.log(userName);
+        console.log(difficulty);
         navigate('/game');
+      } else {
+        if (!userName) {
+          setErrorMsg((prev) => ({ ...prev, username: true }));
+        }
+        if (!difficulty) {
+          setErrorMsg((prev) => ({ ...prev, difficulty: true }));
+        }
       }
     }, 500);
   };
@@ -52,6 +64,9 @@ const Home = () => {
 
       <div className="input-username" data-testid="username-input">
         <UserNameInput defaultValue={userName} setUserName={setUserName} />
+        {errorMsg.username && (
+          <span className="error-msg">Enter a user name, please</span>
+        )}
       </div>
 
       <div className="choose-difficulty" data-testid="difficulty-choice">
@@ -59,6 +74,9 @@ const Home = () => {
           difficultyList={difficultyList}
           setDifficulty={setDifficulty}
         />
+        {errorMsg.difficulty && (
+          <span className="error-msg">Select some difficulty, please</span>
+        )}
       </div>
 
       <div className="start-button-box" data-testid="start-button-box">
