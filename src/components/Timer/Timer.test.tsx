@@ -18,25 +18,28 @@ describe('Timer component', () => {
 
   it('should not render when isVisible is false', () => {
     // @ts-expect-error: Mocking hook
-    useCountdownTimer.mockReturnValue({ ...mockUseCountdownTimer, isVisible: false });
-    
+    useCountdownTimer.mockReturnValue({
+      ...mockUseCountdownTimer,
+      isVisible: false,
+    });
+
     render(<Timer startCountdown={true} onComplete={vi.fn()} />);
-    
+
     expect(screen.queryByText('5')).toBeNull();
   });
 
   it('should render the countdown number when isVisible is true', () => {
     render(<Timer startCountdown={true} onComplete={vi.fn()} />);
-    
+
     expect(screen.getByText('5')).toBeInTheDocument();
   });
 
   it('should display "GO!" when count is 0', () => {
     // @ts-expect-error: Mocking hook
     useCountdownTimer.mockReturnValue({ ...mockUseCountdownTimer, count: 0 });
-    
+
     render(<Timer startCountdown={true} onComplete={vi.fn()} />);
-    
+
     expect(screen.getByText('GO!')).toBeInTheDocument();
   });
 });

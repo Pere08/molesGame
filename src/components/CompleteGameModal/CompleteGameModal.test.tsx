@@ -13,7 +13,7 @@ describe('CompleteGameModal', () => {
         points={100}
         playAgainFn={mockPlayAgainFn}
         closeGameFn={mockCloseGameFn}
-      />
+      />,
     );
 
     const modalContent = screen.queryByText('Thanks for play!');
@@ -27,7 +27,7 @@ describe('CompleteGameModal', () => {
         points={150}
         playAgainFn={mockPlayAgainFn}
         closeGameFn={mockCloseGameFn}
-      />
+      />,
     );
 
     expect(screen.getByText('Thanks for play!')).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe('CompleteGameModal', () => {
         points={150}
         playAgainFn={mockPlayAgainFn}
         closeGameFn={mockCloseGameFn}
-      />
+      />,
     );
 
     const playAgainButton = screen.getByText('Play again');
@@ -57,7 +57,7 @@ describe('CompleteGameModal', () => {
         points={150}
         playAgainFn={mockPlayAgainFn}
         closeGameFn={mockCloseGameFn}
-      />
+      />,
     );
 
     const closeGameButton = screen.getByText('No thanks');
