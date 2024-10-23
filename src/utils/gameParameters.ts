@@ -5,12 +5,12 @@ export const difficultyParameters = {
     countdown: 30000,
   },
   medium: {
-    time: 750,
+    time: 800,
     points: 20,
     countdown: 25000,
   },
   hard: {
-    time: 500,
+    time: 600,
     points: 30,
     countdown: 20000,
   },
