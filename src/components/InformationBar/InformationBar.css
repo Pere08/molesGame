@@ -8,6 +8,7 @@
 
 .user-name-info {
   display: flex;
+  flex-direction: column;
   height: 80%;
   width: 40%;
   font-size: x-large;
@@ -17,9 +18,16 @@
 
 .difficulty-selected {
   display: flex;
+  flex-direction: column;
   height: 80%;
   width: 40%;
   font-size: x-large;
   justify-content: center;
   align-items: center;
+}
+
+.user-name, .difficulty {
+  font-weight: bold;
+  font-size: xx-large;
+  color: rgb(95, 60, 6);
 }

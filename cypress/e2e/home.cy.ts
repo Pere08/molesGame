@@ -1,4 +1,4 @@
-describe('Moles Game Home Page (Mobile)', () => {
+describe("Mole's Game Home Page (Mobile)", () => {
   beforeEach(() => {
     cy.viewport('iphone-6'); 
     cy.visit('http://localhost:5173/');

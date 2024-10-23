@@ -13,7 +13,10 @@ const Timer = ({ startCountdown, onComplete }: ITimer) => {
   return (
     <div className="modal-background-timer">
       <div className="modal-content-timer">
-        {count > 0 ? <h1>{count}</h1> : <h1>GO!</h1>}
+        {count > 0 ? 
+        (<>
+          Timer <span>{count}</span>
+        </>) : <span>GO!</span>}
       </div>
     </div>
   );
