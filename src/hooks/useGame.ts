@@ -1,18 +1,24 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Difficulty } from '../pages/Home/Home';
 import { difficultyParameters } from '../utils/gameParameters';
 import { moleBoxes } from '../pages/Game/Game.props';
 import { useNavigate } from 'react-router-dom';
+import { Difficulty } from './useHome';
 
 export const useGame = () => {
   const navigate = useNavigate();
+  const currentDifficulty = localStorage.getItem('difficulty') ?? 'easy';
+  const currentName = localStorage.getItem('userName') ?? '';
+
+  useEffect(() => {
+    if (!currentDifficulty || !currentName) {
+      navigate('/');
+    }
+  }, []);
 
   const [startTimer, setStartTimer] = useState<boolean>(false);
   const [showCompleteGameModal, setCompleteGameModal] = useState(false);
   const [numPoints, setNumPoints] = useState<number>(0);
   const [moleBoxes, setMoleBoxes] = useState<moleBoxes>(Array(9).fill(false));
-  const currentDifficulty = localStorage.getItem('difficulty') ?? 'easy';
-  const currentName = localStorage.getItem('userName') ?? '';
   const [isToggling, setIsToggling] = useState(false);
 
   const togglingState = useMemo(() => isToggling, [isToggling]);

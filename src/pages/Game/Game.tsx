@@ -5,10 +5,10 @@ import CountDown from '../../components/CountDown/CountDown';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { useGame } from '../../hooks/useGame'; // Importa el nuevo hook
 import { difficultyParameters } from '../../utils/gameParameters';
-import { Difficulty } from '../Home/Home';
-import './Game.css';
 import Timer from '../../components/Timer/Timer';
 import CompleteGameModal from '../../components/CompleteGameModal/CompleteGameModal';
+import { Difficulty } from '../../hooks/useHome';
+import './Game.css';
 
 const Game = () => {
   const {
