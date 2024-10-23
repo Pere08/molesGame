@@ -40,6 +40,11 @@ export const useGame = () => {
     navigate('/');
   };
 
+  const handlePlayAgain = () => {
+    setNumPoints(0);
+    handleStartTimer();
+  };
+
   const handleFinishCountDown = () => {
     setCompleteGameModal(true);
     stopToggling();
@@ -94,5 +99,6 @@ export const useGame = () => {
     showCompleteGameModal,
     handleReturnHome,
     handleFinishCountDown,
+    handlePlayAgain,
   };
 };

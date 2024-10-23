@@ -11,8 +11,8 @@ const Timer = ({ startCountdown, onComplete }: ITimer) => {
   if (!isVisible) return null;
 
   return (
-    <div className="modal-background">
-      <div className="modal-content">
+    <div className="modal-background-timer">
+      <div className="modal-content-timer">
         {count > 0 ? <h1>{count}</h1> : <h1>GO!</h1>}
       </div>
     </div>
