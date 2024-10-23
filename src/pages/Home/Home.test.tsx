@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter, useNavigate } from 'react-router-dom';
 import Home from './Home';
 import { vi } from 'vitest';
@@ -69,10 +69,8 @@ describe('Home', () => {
     const startButton = screen.getByTestId('start-button');
     fireEvent.click(startButton);
 
-    await waitFor(() => {
-      expect(localStorage.getItem('difficulty')).toBe('hard');
-      expect(localStorage.getItem('userName')).toBe('Alice');
-    });
+    expect(localStorage.getItem('difficulty')).toBe('hard');
+    expect(localStorage.getItem('userName')).toBe('Alice');
   });
 
   it('shows error messages if username or difficulty is not selected', () => {
