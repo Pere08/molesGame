@@ -28,10 +28,6 @@ export const useGame = () => {
     setMoleBoxes(Array(9).fill(false));
   }, []);
 
-  const handleStart = () => {
-    setIsToggling(true);
-  };
-
   const handleStartTimer = () => {
     setCompleteGameModal(false);
     setStartTimer(true);
@@ -39,7 +35,7 @@ export const useGame = () => {
 
   const handleCompleteTimer = () => {
     setStartTimer(false);
-    handleStart();
+    setIsToggling(true);
   };
 
   const handleReturnHome = () => {
@@ -90,6 +86,7 @@ export const useGame = () => {
   }, [isToggling, toggleMoleBoxes, currentDifficulty]);
 
   return {
+    toggleMoleBoxes,
     numPoints,
     setNumPoints,
     moleBoxes,
