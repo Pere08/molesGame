@@ -18,3 +18,9 @@ export const allImages = [
 export const firstCapitalLetter = (value: string): string => {
   return value.charAt(0).toUpperCase() + value.slice(1);
 };
+
+export const vibrate = () => {
+  if (navigator.vibrate) {
+    navigator.vibrate(300);
+  }
+};
