@@ -1,0 +1,12 @@
+.choose-difficulty-button-box {
+  display: flex;
+  width: 80%;
+  gap: 5%;
+}
+.difficulty-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: large;
+}

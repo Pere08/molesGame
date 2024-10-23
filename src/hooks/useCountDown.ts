@@ -25,11 +25,13 @@ const useCountDown = (
             clearInterval(id);
             hasEnded.current = true;
             onTimerEnd();
+            setMilliseconds(initialTime);
             return 0;
           }
           return prev - 10;
         });
       }, 10);
+
       setTimerId(id);
     } else if (timerId) {
       clearInterval(timerId);

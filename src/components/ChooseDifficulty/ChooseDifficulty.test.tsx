@@ -26,9 +26,9 @@ describe('ChooseDifficulty', () => {
       />,
     );
 
-    const easyButton = screen.getByRole('button', { name: 'easy' });
-    const mediumButton = screen.getByRole('button', { name: 'medium' });
-    const hardButton = screen.getByRole('button', { name: 'hard' });
+    const easyButton = screen.getByRole('button', { name: 'Easy' });
+    const mediumButton = screen.getByRole('button', { name: 'Medium' });
+    const hardButton = screen.getByRole('button', { name: 'Hard' });
 
     fireEvent.click(easyButton);
     expect(setDifficulty).toHaveBeenCalledWith('easy');

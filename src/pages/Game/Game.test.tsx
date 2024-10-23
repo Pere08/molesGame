@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import Game from './Game';
 import { useGame } from '../../hooks/useGame';
+import { firstCapitalLetter } from '../../utils/utils';
 
 vi.mock('../../hooks/useGame');
 
@@ -9,12 +10,12 @@ describe('Game component', () => {
   const mockUseGame = {
     numPoints: 0,
     setNumPoints: vi.fn(),
-    moleBoxes: [true, false, true],
+    moleBoxes: [true, false, false, false, false],
     currentDifficulty: 'easy',
     currentName: 'Player',
     togglingState: false,
     stopToggling: vi.fn(),
-    handleStart: vi.fn(),
+    handleStartTimer: vi.fn(),
   };
 
   beforeEach(() => {
@@ -24,9 +25,11 @@ describe('Game component', () => {
 
   it('should render the user name and difficulty level', () => {
     render(<Game />);
+    const playerName = 'Player';
+    const level = firstCapitalLetter('easy');
 
-    expect(screen.getByText('Player')).toBeInTheDocument();
-    expect(screen.getByText('easy')).toBeInTheDocument();
+    expect(screen.getByText(`Player ${playerName}`)).toBeInTheDocument();
+    expect(screen.getByText(`Level ${level}`)).toBeInTheDocument();
   });
 
   it('should render the correct number of MoleBox components', () => {
@@ -37,9 +40,15 @@ describe('Game component', () => {
   });
 
   it('should call setNumPoints when MoleBox is clicked', () => {
+    // @ts-expect-error: The 'vi' namespace is not recognized by TypeScript
+    (useGame as vi.Mock).mockReturnValue({
+      ...mockUseGame,
+      moleBoxes: [true, false, false, false, false],
+    });
+
     render(<Game />);
 
-    const moleBoxes = screen.getAllByRole('button');
+    const moleBoxes = screen.getAllByRole('img');
     fireEvent.click(moleBoxes[0]);
 
     expect(mockUseGame.setNumPoints).toHaveBeenCalled();
@@ -51,7 +60,7 @@ describe('Game component', () => {
     const startButton = screen.getByText('Start');
     expect(startButton).toBeInTheDocument();
     fireEvent.click(startButton);
-    expect(mockUseGame.handleStart).toHaveBeenCalledTimes(1);
+    expect(mockUseGame.handleStartTimer).toHaveBeenCalledTimes(1);
   });
 
   it('should display "Stop" button when game is active', () => {

@@ -2,8 +2,13 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Difficulty } from '../pages/Home/Home';
 import { difficultyParameters } from '../utils/gameParameters';
 import { moleBoxes } from '../pages/Game/Game.props';
+import { useNavigate } from 'react-router-dom';
 
 export const useGame = () => {
+  const navigate = useNavigate();
+
+  const [startTimer, setStartTimer] = useState<boolean>(false);
+  const [showCompleteGameModal, setCompleteGameModal] = useState(false);
   const [numPoints, setNumPoints] = useState<number>(0);
   const [moleBoxes, setMoleBoxes] = useState<moleBoxes>(Array(9).fill(false));
   const currentDifficulty = localStorage.getItem('difficulty') ?? 'easy';
@@ -19,6 +24,25 @@ export const useGame = () => {
 
   const handleStart = () => {
     setIsToggling(true);
+  };
+
+  const handleStartTimer = () => {
+    setCompleteGameModal(false);
+    setStartTimer(true);
+  };
+
+  const handleCompleteTimer = () => {
+    setStartTimer(false);
+    handleStart();
+  };
+
+  const handleReturnHome = () => {
+    navigate('/');
+  };
+
+  const handleFinishCountDown = () => {
+    setCompleteGameModal(true);
+    stopToggling();
   };
 
   const toggleMoleBoxes = useCallback(() => {
@@ -64,6 +88,11 @@ export const useGame = () => {
     isToggling,
     togglingState,
     stopToggling,
-    handleStart,
+    startTimer,
+    handleStartTimer,
+    handleCompleteTimer,
+    showCompleteGameModal,
+    handleReturnHome,
+    handleFinishCountDown,
   };
 };

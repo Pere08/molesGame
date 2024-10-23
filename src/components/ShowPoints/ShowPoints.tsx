@@ -1,7 +1,8 @@
 import { IShowPoints } from './ShowPoints.props';
+import './ShowPoints.css';
 
 const ShowPoints = ({ numPoints }: IShowPoints) => {
-  return <div className="show-points">{numPoints}</div>;
+  return <button className="show-points">{numPoints}</button>;
 };
 
 export default ShowPoints;

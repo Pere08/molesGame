@@ -1,5 +1,6 @@
 import useCountDown from '../../hooks/useCountDown';
 import { ICountDown } from './CountDown.props';
+import './CountDown.css';
 
 const CountDown = ({ initialTime, isActive, onTimerEnd }: ICountDown) => {
   const milliseconds = useCountDown(initialTime, isActive, onTimerEnd);
@@ -12,7 +13,7 @@ const CountDown = ({ initialTime, isActive, onTimerEnd }: ICountDown) => {
     return `${minutes}:${seconds}:${miliseconds}`;
   };
 
-  return <div>{formatTime(milliseconds)}</div>;
+  return <button className="counter">{formatTime(milliseconds)}</button>;
 };
 
 export default CountDown;

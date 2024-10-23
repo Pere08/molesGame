@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { IMoleBox } from './MoleBox.props';
-import { loadCachedImage } from '../../services/pokeService';
+import { getCachedImage, loadCachedImage } from '../../services/pokeService';
+import './MoleBox.css';
+import { pokeballImg } from '../../utils/utils';
 
 const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
   const [pokemonImage, setPokemonImage] = useState<string>('');
+  const [pokeBallImg, setPokeBallImg] = useState<string>();
 
   useEffect(() => {
     loadCachedImage().then((cachedImage) => {
@@ -11,19 +14,30 @@ const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
         setPokemonImage(cachedImage);
       }
     });
+    getCachedImage(pokeballImg).then((img) => {
+      if (img) {
+        setPokeBallImg(img);
+      }
+    });
   }, []);
 
   return (
     <div className="mole-box">
       {show ? (
-        <button
-          type="button"
+        <div
+          className="image-container"
           onClick={() => setNumPoints((prev) => prev + pointsByDifficulty)}
         >
-          <img src={pokemonImage} alt="Random Pokémon" />
-        </button>
+          <img
+            className="image-pokemon"
+            src={pokemonImage}
+            alt="Random Pokémon"
+          />
+        </div>
       ) : (
-        <div>nop</div>
+        <div className="image-container">
+          <img className="image-pokeball" src={pokeBallImg} alt="Poké Ball" />
+        </div>
       )}
     </div>
   );

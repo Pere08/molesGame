@@ -51,3 +51,38 @@ export const loadCachedImage = async () => {
     console.error('Error loading Pokémon image from cache:', error);
   }
 };
+
+export const cacheImage = async (imageUrl: string) => {
+  try {
+    const cache = await caches.open('images-cache');
+    const response = await fetch(imageUrl);
+    if (!response.ok) {
+      throw new Error(`Error al descargar la imagen: ${response.statusText}`);
+    }
+    await cache.put(imageUrl, response);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
+export const getCachedImage = async (
+  imageUrl: string,
+): Promise<string | undefined> => {
+  try {
+    const cache = await caches.open('images-cache');
+    const cachedResponse = await cache.match(imageUrl);
+
+    if (cachedResponse) {
+      const blob = await cachedResponse.blob();
+      const cachedImage = URL.createObjectURL(blob);
+
+      return cachedImage;
+    } else {
+      console.error('Imagen not found');
+      return undefined;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    return undefined;
+  }
+};
