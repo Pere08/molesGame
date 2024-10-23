@@ -61,7 +61,7 @@
   font-size: medium;
 }
 
-.start-button-box {
+.button-container {
   height: 40vh;
   display: flex;
   justify-content: center;

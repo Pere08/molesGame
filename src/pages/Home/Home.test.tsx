@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { MemoryRouter, useNavigate } from 'react-router-dom';
 import Home from './Home';
 import { vi } from 'vitest';
 
@@ -29,7 +29,7 @@ describe('Home', () => {
     expect(screen.getByText("Mole's Game")).toBeInTheDocument();
     expect(screen.getByTestId('username-input')).toBeInTheDocument();
     expect(screen.getByTestId('difficulty-choice')).toBeInTheDocument();
-    expect(screen.getByTestId('start-button-box')).toBeInTheDocument();
+    expect(screen.getByTestId('start-button')).toBeInTheDocument();
   });
 
   it('loads the username and difficulty from localStorage', () => {
@@ -51,7 +51,7 @@ describe('Home', () => {
     expect(selectedDifficulty).toBeInTheDocument();
   });
 
-  it('updates the username and stores it in localStorage', () => {
+  it('updates the difficulty and stores it in localStorage after submitting', async () => {
     render(
       <MemoryRouter>
         <Home />
@@ -63,19 +63,53 @@ describe('Home', () => {
       .querySelector('input');
     fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
 
-    expect(localStorage.getItem('userName')).toBe('Alice');
+    const hardButton = screen.getByText('Hard');
+    fireEvent.click(hardButton);
+
+    const startButton = screen.getByTestId('start-button');
+    fireEvent.click(startButton);
+
+    await waitFor(() => {
+      expect(localStorage.getItem('difficulty')).toBe('hard');
+      expect(localStorage.getItem('userName')).toBe('Alice');
+    });
   });
 
-  it('updates the difficulty and stores it in localStorage', () => {
+  it('shows error messages if username or difficulty is not selected', () => {
     render(
       <MemoryRouter>
         <Home />
       </MemoryRouter>,
     );
 
+    const startButton = screen.getByTestId('start-button');
+    fireEvent.click(startButton);
+
+    expect(screen.getByTestId('error-msg-username')).toBeInTheDocument();
+    expect(screen.getByTestId('error-msg-difficulty')).toBeInTheDocument();
+  });
+
+  it('navigates to the game page when both username and difficulty are provided', () => {
+    const mockNavigate = vi.fn();
+    vi.mocked(useNavigate).mockReturnValue(mockNavigate);
+
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const usernameInput = screen
+      .getByTestId('username-input')
+      .querySelector('input');
+    fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
+
     const hardButton = screen.getByText('Hard');
     fireEvent.click(hardButton);
 
-    expect(localStorage.getItem('difficulty')).toBe('hard');
+    const startButton = screen.getByTestId('start-button');
+    fireEvent.click(startButton);
+
+    expect(mockNavigate).toHaveBeenCalledWith('/game');
   });
 });

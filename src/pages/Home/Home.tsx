@@ -20,7 +20,9 @@ const Home = () => {
       <div className="input-username" data-testid="username-input">
         <UserNameInput defaultValue={userName} setUserName={setUserName} />
         {errorMsg.username && (
-          <span className="error-msg">Enter a name, please</span>
+          <span className="error-msg" data-testid="error-msg-username">
+            Enter a name, please
+          </span>
         )}
       </div>
 
@@ -30,13 +32,15 @@ const Home = () => {
           setDifficulty={setDifficulty}
         />
         {errorMsg.difficulty && (
-          <span className="error-msg">Select some difficulty, please</span>
+          <span className="error-msg" data-testid="error-msg-difficulty">
+            Select some difficulty, please
+          </span>
         )}
       </div>
 
-      <div className="start-button-box" data-testid="start-button-box">
+      <div className="button-container">
         <CustomButton
-          test-id="start-button"
+          testId="start-button"
           className="play-button"
           onClick={onSubmit}
           name="PLAY"

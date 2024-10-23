@@ -19,20 +19,18 @@ const useHome = () => {
 
   const onSubmit = () => {
     setErrorMsg({ username: false, difficulty: false });
-    setTimeout(() => {
-      if (userName && difficulty) {
-        localStorage.setItem('userName', userName);
-        localStorage.setItem('difficulty', difficulty!);
-        navigate('/game');
-      } else {
-        if (!userName) {
-          setErrorMsg((prev) => ({ ...prev, username: true }));
-        }
-        if (!difficulty) {
-          setErrorMsg((prev) => ({ ...prev, difficulty: true }));
-        }
+    if (userName && difficulty) {
+      localStorage.setItem('userName', userName);
+      localStorage.setItem('difficulty', difficulty!);
+      navigate('/game');
+    } else {
+      if (!userName) {
+        setErrorMsg((prev) => ({ ...prev, username: true }));
       }
-    }, 500);
+      if (!difficulty) {
+        setErrorMsg((prev) => ({ ...prev, difficulty: true }));
+      }
+    }
   };
 
   return {

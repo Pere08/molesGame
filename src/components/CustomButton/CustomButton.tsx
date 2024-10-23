@@ -2,16 +2,16 @@ import { ICustomButton } from './CustomButton.props';
 import './CustomButton.css';
 
 const CustomButton = ({
-  testId,
   className,
   name,
   onClick,
   img,
+  testId,
 }: ICustomButton) => {
   return (
     <button
-      type="button"
       data-testid={testId}
+      type="button"
       className={className}
       onClick={onClick}
     >

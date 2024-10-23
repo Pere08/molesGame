@@ -1,7 +1,5 @@
-import { Difficulty } from '../../pages/Home/Home';
 import CustomButton from '../CustomButton/CustomButton';
 import { IChooseDifficulty } from './ChooseDifficulty.props';
-import './ChooseDifficulty.css';
 import {
   allImages,
   difficutlyImg,
@@ -9,6 +7,8 @@ import {
 } from '../../utils/utils';
 import { cacheImage, getCachedImage } from '../../services/pokeService';
 import { useEffect, useState } from 'react';
+import { Difficulty } from '../../hooks/useHome';
+import './ChooseDifficulty.css';
 
 const ChooseDifficulty = ({
   difficultyList,

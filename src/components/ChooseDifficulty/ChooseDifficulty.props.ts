@@ -1,5 +1,4 @@
-import { Difficulty } from '../../pages/Home/Home';
-
+import { Difficulty } from '../../hooks/useHome';
 export interface IChooseDifficulty {
   setDifficulty: (value: Difficulty) => void;
   difficultyList: string[];
