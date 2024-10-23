@@ -60,13 +60,14 @@ export const cacheImage = async (imageUrl: string) => {
       throw new Error(`Error al descargar la imagen: ${response.statusText}`);
     }
     await cache.put(imageUrl, response);
-
   } catch (error) {
     console.error('Error:', error);
   }
 };
 
-export const getCachedImage = async (imageUrl: string): Promise<string | undefined> => {
+export const getCachedImage = async (
+  imageUrl: string,
+): Promise<string | undefined> => {
   try {
     const cache = await caches.open('images-cache');
     const cachedResponse = await cache.match(imageUrl);
@@ -75,7 +76,7 @@ export const getCachedImage = async (imageUrl: string): Promise<string | undefin
       const blob = await cachedResponse.blob();
       const cachedImage = URL.createObjectURL(blob);
 
-      return cachedImage; 
+      return cachedImage;
     } else {
       console.error('Imagen not found');
       return undefined;

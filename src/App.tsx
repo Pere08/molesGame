@@ -10,8 +10,8 @@ function App() {
   useEffect(() => {
     loadPokemonImages();
     Object.values(difficutlyImg).forEach((img) => {
-      cacheImage(img)
-    })
+      cacheImage(img);
+    });
   }, []);
 
   return (

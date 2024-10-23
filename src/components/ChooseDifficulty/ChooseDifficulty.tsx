@@ -10,19 +10,21 @@ const ChooseDifficulty = ({
   difficultyList,
   setDifficulty,
 }: IChooseDifficulty) => {
-  const [imgList, setImgList] = useState<(string | undefined)[]>([])
+  const [imgList, setImgList] = useState<(string | undefined)[]>([]);
   const difficultyHandler = (difficulty: Difficulty) => {
     setDifficulty(difficulty);
   };
 
   useEffect(() => {
-    Promise.all(Object.values(difficutlyImg).map(async (img) => {
-      const blobImg = await getCachedImage(img);
-      return blobImg;
-    })).then((data) => {
+    Promise.all(
+      Object.values(difficutlyImg).map(async (img) => {
+        const blobImg = await getCachedImage(img);
+        return blobImg;
+      }),
+    ).then((data) => {
       setImgList([...data]);
     });
-  }, []);  
+  }, []);
 
   return (
     <div className="choose-difficulty-button-box">
@@ -33,7 +35,7 @@ const ChooseDifficulty = ({
           key={`${name}-${index}`}
           name={name}
           onClick={() => difficultyHandler(name as Difficulty)}
-          img={imgList[index] ?? ""}
+          img={imgList[index] ?? ''}
         />
       ))}
     </div>
