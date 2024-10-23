@@ -1,11 +1,34 @@
+.information-bar-container {
+  height: 15vh;
+}
+
+.points-and-countdown {
+  height: 15vh;
+  display: flex;
+  justify-content: space-around;
+}
+
 .game-box {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  width: 100%;
+  height: 50vh;
 }
 
-.points-and-countdown {
+.start-stop-button-container {
+  height: 20vh;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+}
+
+.game-container {
+  background-image: url('../../images/background_game.jpg');
+  background-size: cover; 
+  background-position: center; 
+}
+
+.action-button {
+  height: 80%;
+  width: 80%;
+  font-size: xx-large;
 }

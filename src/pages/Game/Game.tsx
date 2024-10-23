@@ -28,7 +28,7 @@ const Game = () => {
   } = useGame();
 
   return (
-    <div>
+    <div className='game-container'>
       <Timer startCountdown={startTimer} onComplete={handleCompleteTimer} />
       <CompleteGameModal
         isVisible={showCompleteGameModal}
@@ -36,10 +36,14 @@ const Game = () => {
         closeGameFn={handleReturnHome}
         playAgainFn={handleStartTimer}
       />
-      <InformationBar
-        userName={currentName}
-        difficultyLevel={currentDifficulty}
-      />
+
+      <div className='information-bar-container'>
+        <InformationBar
+          userName={currentName}
+          difficultyLevel={currentDifficulty}
+        />
+      </div>
+
       <div className="points-and-countdown">
         <ShowPoints numPoints={numPoints} />
         <CountDown
@@ -48,6 +52,7 @@ const Game = () => {
           initialTime={30000}
         />
       </div>
+
       <div className="game-box">
         {moleBoxes.map((box, index) => (
           <MoleBox
@@ -60,16 +65,16 @@ const Game = () => {
           />
         ))}
       </div>
-      <div>
+      <div className='start-stop-button-container'>
         {togglingState ? (
           <CustomButton
-            className="stop-button"
+            className="action-button"
             name="Stop"
             onClick={stopToggling}
           />
         ) : (
           <CustomButton
-            className="start-button"
+            className="action-button"
             name="Start"
             onClick={handleStartTimer}
           />

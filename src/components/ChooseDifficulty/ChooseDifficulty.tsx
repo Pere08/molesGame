@@ -11,6 +11,11 @@ const ChooseDifficulty = ({
     setDifficulty(difficulty);
   };
 
+  // const charmander = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png";
+  // const charmeleon = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png";
+  const charizard = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png";
+
+
   return (
     <div className="choose-difficulty-button-box">
       {difficultyList.map((name, index) => (
@@ -20,6 +25,7 @@ const ChooseDifficulty = ({
           key={`${name}-${index}`}
           name={name}
           onClick={() => difficultyHandler(name as Difficulty)}
+          img={charizard}
         />
       ))}
     </div>

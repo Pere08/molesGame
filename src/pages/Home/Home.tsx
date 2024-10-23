@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import ChooseDifficulty from '../../components/ChooseDifficulty/ChooseDifficulty';
 import UserNameInput from '../../components/UserNameInput/UserNameInput';
 import { useNavigate } from 'react-router-dom';
-import './Home.css';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import './Home.css';
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
 
@@ -40,30 +40,37 @@ const Home = () => {
       if (userName && difficulty) {
         navigate('/game');
       }
-    }, 1000);
+    }, 500);
   };
 
   return (
     <div className="home">
-      <h1 className="title">Mole's Game</h1>
-      <h3 className="title">Pokemon version</h3>
+
+      <div className="title-container">
+        <h1 className="title">Mole's Game</h1>
+        <h3 className="sub-title">Pokemon version</h3>
+      </div>
+
       <div className="input-username" data-testid="username-input">
         <UserNameInput defaultValue={userName} setUserName={setUserName} />
       </div>
+
       <div className="choose-difficulty" data-testid="difficulty-choice">
         <ChooseDifficulty
           difficultyList={difficultyList}
           setDifficulty={setDifficulty}
         />
       </div>
+
       <div className="start-button-box" data-testid="start-button-box">
         <CustomButton
           test-id="start-button"
           className="play-button"
-          name="Play"
           onClick={onSubmit}
+          name='Play'
         />
       </div>
+      
     </div>
   );
 };

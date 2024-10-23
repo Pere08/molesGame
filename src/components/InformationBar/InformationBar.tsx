@@ -4,8 +4,12 @@ import './InformationBar.css';
 const InformationBar = ({ userName, difficultyLevel }: IInformationBar) => {
   return (
     <div className="information-bar">
-      <div className="user-name-info">Player: {userName}</div>
-      <div className="difficulty-selected">Level: {difficultyLevel}</div>
+      <button className="user-name-info" type="button">
+      Player: {userName}
+      </button>
+      <button className="difficulty-selected"type="button">
+      Level: {difficultyLevel}
+      </button>
     </div>
   );
 };

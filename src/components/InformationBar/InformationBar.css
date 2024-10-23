@@ -1,4 +1,25 @@
 .information-bar {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.user-name-info {
+  display: flex;
+  height: 80%;
+  width: 40%;
+  font-size: x-large;
+  justify-content: center;
+  align-items: center;
+}
+
+.difficulty-selected {
+  display: flex;
+  height: 80%;
+  width: 40%;
+  font-size: x-large;
+  justify-content: center;
+  align-items: center;
 }
