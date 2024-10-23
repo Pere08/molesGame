@@ -10,6 +10,7 @@ export type Difficulty = 'easy' | 'medium' | 'hard';
 const Home = () => {
   const navigate = useNavigate();
 
+  const [showError, setShowError] = useState(false);
   const [userName, setUserName] = useState<string>('');
   const [difficulty, setDifficulty] = useState<Difficulty>('easy');
 
@@ -36,9 +37,12 @@ const Home = () => {
   }, [difficulty]);
 
   const onSubmit = () => {
+    setShowError(false);
     setTimeout(() => {
       if (userName && difficulty) {
         navigate('/game');
+      } else {
+        setShowError(true);
       }
     }, 500);
   };
@@ -59,6 +63,14 @@ const Home = () => {
           difficultyList={difficultyList}
           setDifficulty={setDifficulty}
         />
+      </div>
+
+      <div className="error-msg-container">
+        {showError && (
+          <span className="error-msg">
+            INSERT A NAME AND CHOOSE A DIFFICULTY
+          </span>
+        )}
       </div>
 
       <div className="start-button-box" data-testid="start-button-box">

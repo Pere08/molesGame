@@ -16,9 +16,9 @@ const ICompleteGameModal = ({
   return (
     <div className="modal-background">
       <div className="modal-content">
-        <h2>Thanks for play!</h2>
-        <h2>Points: {points}</h2>
-        <div>
+        <h4>Thanks for play!</h4>
+        <h4>Points: {points}</h4>
+        <div className="buttons-container">
           <button type="button" onClick={playAgainFn}>
             Play again
           </button>

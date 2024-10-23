@@ -49,7 +49,9 @@ const Game = () => {
         <CountDown
           isActive={togglingState}
           onTimerEnd={handleFinishCountDown}
-          initialTime={30000}
+          initialTime={
+            difficultyParameters[currentDifficulty as Difficulty].countdown
+          }
         />
       </div>
 
