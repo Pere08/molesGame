@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import InformationBar from './InformationBar';
+import { firstCapitalLetter } from '../../utils/utils';
 
 describe('InformationBar', () => {
   it('should display the user name correctly', () => {
@@ -10,7 +11,7 @@ describe('InformationBar', () => {
       <InformationBar userName={userName} difficultyLevel={difficultyLevel} />,
     );
 
-    const userNameElement = screen.getByText(userName);
+    const userNameElement = screen.getByText(`Player ${firstCapitalLetter(userName)}`);
     expect(userNameElement).toBeInTheDocument();
   });
 
@@ -22,7 +23,7 @@ describe('InformationBar', () => {
       <InformationBar userName={userName} difficultyLevel={difficultyLevel} />,
     );
 
-    const difficultyElement = screen.getByText(difficultyLevel);
+    const difficultyElement = screen.getByText(`Level ${firstCapitalLetter(difficultyLevel)}`);
     expect(difficultyElement).toBeInTheDocument();
   });
 
@@ -34,7 +35,7 @@ describe('InformationBar', () => {
       <InformationBar userName={userName} difficultyLevel={difficultyLevel} />,
     );
 
-    expect(screen.getByText(userName)).toBeInTheDocument();
-    expect(screen.getByText(difficultyLevel)).toBeInTheDocument();
+    expect(screen.getByText(`Player ${firstCapitalLetter(userName)}`)).toBeInTheDocument();
+    expect(screen.getByText(`Level ${firstCapitalLetter(difficultyLevel)}`)).toBeInTheDocument();
   });
 });

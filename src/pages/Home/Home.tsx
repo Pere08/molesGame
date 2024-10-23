@@ -66,7 +66,7 @@ const Home = () => {
           test-id="start-button"
           className="play-button"
           onClick={onSubmit}
-          name="Play"
+          name="PLAY"
         />
       </div>
     </div>

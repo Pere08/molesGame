@@ -4,12 +4,12 @@ import './App.css';
 import Home from './pages/Home/Home';
 import Game from './pages/Game/Game';
 import { cacheImage, loadPokemonImages } from './services/pokeService';
-import { difficutlyImg } from './utils/utils';
+import { allImages } from './utils/utils';
 
 function App() {
   useEffect(() => {
     loadPokemonImages();
-    Object.values(difficutlyImg).forEach((img) => {
+    allImages.forEach((img) => {
       cacheImage(img);
     });
   }, []);

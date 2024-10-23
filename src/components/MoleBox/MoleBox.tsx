@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react';
 import { IMoleBox } from './MoleBox.props';
-import { loadCachedImage } from '../../services/pokeService';
+import { getCachedImage, loadCachedImage } from '../../services/pokeService';
 import './MoleBox.css';
+import { pokeballImg } from '../../utils/utils';
 
 const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
   const [pokemonImage, setPokemonImage] = useState<string>('');
+  const [pokeBallImg, setPokeBallImg] = useState<string>();
 
   useEffect(() => {
     loadCachedImage().then((cachedImage) => {
       if (cachedImage) {
         setPokemonImage(cachedImage);
+      }
+    });
+    getCachedImage(pokeballImg).then((img) => {
+      if(img){
+        setPokeBallImg(img);
       }
     });
   }, []);
@@ -31,7 +38,7 @@ const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
         <div className="image-container">
           <img
             className="image-pokeball"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+            src={pokeBallImg}
             alt="Poké Ball"
           />
         </div>

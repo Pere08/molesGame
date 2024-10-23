@@ -30,5 +30,6 @@
 .action-button {
   height: 80%;
   width: 80%;
+  font-weight: bold;
   font-size: xx-large;
 }

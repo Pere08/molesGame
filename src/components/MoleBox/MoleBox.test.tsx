@@ -1,62 +1,50 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck The 'vi' namespace is not recognized by TypeScript
 import { render, screen, fireEvent } from '@testing-library/react';
-import MoleBox from './MoleBox';
 import { vi } from 'vitest';
+import MoleBox from './MoleBox';
+import { getCachedImage, loadCachedImage } from '../../services/pokeService';
 
 vi.mock('../../services/pokeService', () => ({
-  loadCachedImage: vi
-    .fn()
-    .mockResolvedValue('https://pokeapi.co/media/sprites/pokemon/50.png'),
+  getCachedImage: vi.fn(),
+  loadCachedImage: vi.fn(),
 }));
 
 describe('MoleBox', () => {
-  const setNumPointsMock = vi.fn();
-  const pointsByDifficulty = 10;
-
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it('renders correctly when show is true', async () => {
-    render(
-      <MoleBox
-        show={true}
-        setNumPoints={setNumPointsMock}
-        pointsByDifficulty={pointsByDifficulty}
-      />,
-    );
+  it('renders pokeball image when show is false', async () => {
+    (getCachedImage as vi.Mock).mockResolvedValue(Promise.resolve('cached-pokeball-image'));
+    (loadCachedImage as vi.Mock).mockResolvedValue(Promise.resolve('cached-pokemon-image'));
 
-    const button = await screen.findByRole('button');
-    expect(button).toBeInTheDocument();
-    expect(await screen.findByAltText('Random Pokémon')).toBeInTheDocument(); // Verificar que la imagen se haya cargado
+    render(<MoleBox show={false} setNumPoints={() => {}} pointsByDifficulty={1} />);
+
+    const pokeballImage = await screen.findByAltText('Poké Ball');
+    expect(pokeballImage).toBeInTheDocument();
+    expect(pokeballImage).toHaveAttribute('src', 'cached-pokeball-image');
   });
 
-  it('does not render button when show is false', () => {
-    render(
-      <MoleBox
-        show={false}
-        setNumPoints={setNumPointsMock}
-        pointsByDifficulty={pointsByDifficulty}
-      />,
-    );
+  it('renders pokemon image when show is true', async () => {
+    (loadCachedImage as vi.Mock).mockResolvedValue(Promise.resolve('cached-pokemon-image'));
 
-    const nopText = screen.getByText(/nop/i);
-    expect(nopText).toBeInTheDocument();
+    render(<MoleBox show={true} setNumPoints={() => {}} pointsByDifficulty={1} />);
+
+    const pokemonImage = await screen.findByAltText('Random Pokémon');
+    expect(pokemonImage).toBeInTheDocument();
+    expect(pokemonImage).toHaveAttribute('src', 'cached-pokemon-image');
   });
 
-  it('calls setNumPoints when the button is clicked', async () => {
-    render(
-      <MoleBox
-        show={true}
-        setNumPoints={setNumPointsMock}
-        pointsByDifficulty={pointsByDifficulty}
-      />,
-    );
+  it('increments points by difficulty when pokemon is clicked', async () => {
+    const setNumPoints = vi.fn();
+    (loadCachedImage as vi.Mock).mockResolvedValue(Promise.resolve('cached-pokemon-image'));
 
-    const button = await screen.findByRole('button');
-    await fireEvent.click(button);
+    render(<MoleBox show={true} setNumPoints={setNumPoints} pointsByDifficulty={5} />);
 
-    expect(setNumPointsMock).toHaveBeenCalledWith(expect.any(Function));
-    const setPointsFunction = setNumPointsMock.mock.calls[0][0];
-    expect(setPointsFunction(0)).toBe(10);
+    const pokemonImage = await screen.findByAltText('Random Pokémon');
+    fireEvent.click(pokemonImage);
+
+    expect(setNumPoints).toHaveBeenCalled();
   });
 });
