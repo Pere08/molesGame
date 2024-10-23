@@ -45,6 +45,7 @@ const Home = () => {
 
   return (
     <div className="home">
+
       <div className="title-container">
         <h1 className="title">Mole's Game</h1>
         <h3 className="sub-title">Pokemon version</h3>
@@ -66,9 +67,10 @@ const Home = () => {
           test-id="start-button"
           className="play-button"
           onClick={onSubmit}
-          name="Play"
+          name='Play'
         />
       </div>
+      
     </div>
   );
 };

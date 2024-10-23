@@ -2,19 +2,27 @@ import { Difficulty } from '../../pages/Home/Home';
 import CustomButton from '../CustomButton/CustomButton';
 import { IChooseDifficulty } from './ChooseDifficulty.props';
 import './ChooseDifficulty.css';
+import { difficutlyImg } from '../../utils/utils';
+import { getCachedImage } from '../../services/pokeService';
+import { useEffect, useState } from 'react';
 
 const ChooseDifficulty = ({
   difficultyList,
   setDifficulty,
 }: IChooseDifficulty) => {
+  const [imgList, setImgList] = useState<(string | undefined)[]>([])
   const difficultyHandler = (difficulty: Difficulty) => {
     setDifficulty(difficulty);
   };
 
-  // const charmander = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png";
-  // const charmeleon = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png";
-  const charizard =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png';
+  useEffect(() => {
+    Promise.all(Object.values(difficutlyImg).map(async (img) => {
+      const blobImg = await getCachedImage(img);
+      return blobImg;
+    })).then((data) => {
+      setImgList([...data]);
+    });
+  }, []);  
 
   return (
     <div className="choose-difficulty-button-box">
@@ -25,7 +33,7 @@ const ChooseDifficulty = ({
           key={`${name}-${index}`}
           name={name}
           onClick={() => difficultyHandler(name as Difficulty)}
-          img={charizard}
+          img={imgList[index] ?? ""}
         />
       ))}
     </div>
