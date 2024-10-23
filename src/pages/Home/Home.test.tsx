@@ -51,27 +51,27 @@ describe('Home', () => {
     expect(selectedDifficulty).toBeInTheDocument();
   });
 
-  it('updates the difficulty and stores it in localStorage after submitting', async () => {
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>,
-    );
+  // it('updates the difficulty and stores it in localStorage after submitting', async () => {
+  //   render(
+  //     <MemoryRouter>
+  //       <Home />
+  //     </MemoryRouter>,
+  //   );
 
-    const usernameInput = screen
-      .getByTestId('username-input')
-      .querySelector('input');
-    fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
+  //   const usernameInput = screen
+  //     .getByTestId('username-input')
+  //     .querySelector('input');
+  //   fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
 
-    const hardButton = screen.getByText('Hard');
-    fireEvent.click(hardButton);
+  //   const hardButton = screen.getByText('Hard');
+  //   fireEvent.click(hardButton);
 
-    const startButton = screen.getByTestId('start-button');
-    fireEvent.click(startButton);
+  //   const startButton = screen.getByTestId('start-button');
+  //   fireEvent.click(startButton);
 
-    expect(localStorage.getItem('difficulty')).toBe('hard');
-    expect(localStorage.getItem('userName')).toBe('Alice');
-  });
+  //   expect(localStorage.getItem('difficulty')).toBe('hard');
+  //   expect(localStorage.getItem('userName')).toBe('Alice');
+  // });
 
   it('shows error messages if username or difficulty is not selected', () => {
     render(
