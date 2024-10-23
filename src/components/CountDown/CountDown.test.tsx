@@ -1,4 +1,3 @@
-// CountDown.test.tsx
 import { render, screen, act } from '@testing-library/react';
 import CountDown from './CountDown';
 import useCountDown from '../../hooks/useCountDown';
@@ -40,7 +39,6 @@ describe('CountDown Component', () => {
       />,
     );
 
-    // Ajustar el texto esperado
     expect(screen.getByText('00:50:000')).toBeInTheDocument();
   });
 
