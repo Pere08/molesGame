@@ -3,15 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home/Home';
 import Game from './pages/Game/Game';
-import { cacheImage, loadPokemonImages } from './services/pokeService';
-import { allImages } from './utils/utils';
+import { loadPokemonImages } from './services/pokeService';
 
 function App() {
   useEffect(() => {
     loadPokemonImages();
-    allImages.forEach((img) => {
-      cacheImage(img);
-    });
   }, []);
 
   return (

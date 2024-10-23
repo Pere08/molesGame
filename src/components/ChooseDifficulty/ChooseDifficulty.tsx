@@ -2,8 +2,8 @@ import { Difficulty } from '../../pages/Home/Home';
 import CustomButton from '../CustomButton/CustomButton';
 import { IChooseDifficulty } from './ChooseDifficulty.props';
 import './ChooseDifficulty.css';
-import { difficutlyImg, firstCapitalLetter } from '../../utils/utils';
-import { getCachedImage } from '../../services/pokeService';
+import { allImages, difficutlyImg, firstCapitalLetter } from '../../utils/utils';
+import { cacheImage, getCachedImage } from '../../services/pokeService';
 import { useEffect, useState } from 'react';
 
 const ChooseDifficulty = ({
@@ -11,9 +11,17 @@ const ChooseDifficulty = ({
   setDifficulty,
 }: IChooseDifficulty) => {
   const [imgList, setImgList] = useState<(string | undefined)[]>([]);
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
   const difficultyHandler = (difficulty: Difficulty) => {
     setDifficulty(difficulty);
   };
+
+  useEffect(() => {
+    const arr = allImages.map((img) => {
+      return cacheImage(img);
+    })
+    Promise.all(arr).then(() => {setIsImgLoaded(true)});
+  }, []);
 
   useEffect(() => {
     Promise.all(
@@ -24,7 +32,7 @@ const ChooseDifficulty = ({
     ).then((data) => {
       setImgList([...data]);
     });
-  }, []);
+  }, [isImgLoaded]);
 
   return (
     <div className="choose-difficulty-button-box">
