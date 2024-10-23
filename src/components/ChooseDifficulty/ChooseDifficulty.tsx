@@ -13,8 +13,8 @@ const ChooseDifficulty = ({
 
   // const charmander = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png";
   // const charmeleon = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png";
-  const charizard = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png";
-
+  const charizard =
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png';
 
   return (
     <div className="choose-difficulty-button-box">

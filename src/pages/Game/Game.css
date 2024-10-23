@@ -23,8 +23,8 @@
 
 .game-container {
   background-image: url('../../images/background_game.jpg');
-  background-size: cover; 
-  background-position: center; 
+  background-size: cover;
+  background-position: center;
 }
 
 .action-button {

@@ -28,7 +28,7 @@ const Game = () => {
   } = useGame();
 
   return (
-    <div className='game-container'>
+    <div className="game-container">
       <Timer startCountdown={startTimer} onComplete={handleCompleteTimer} />
       <CompleteGameModal
         isVisible={showCompleteGameModal}
@@ -37,7 +37,7 @@ const Game = () => {
         playAgainFn={handleStartTimer}
       />
 
-      <div className='information-bar-container'>
+      <div className="information-bar-container">
         <InformationBar
           userName={currentName}
           difficultyLevel={currentDifficulty}
@@ -65,7 +65,7 @@ const Game = () => {
           />
         ))}
       </div>
-      <div className='start-stop-button-container'>
+      <div className="start-stop-button-container">
         {togglingState ? (
           <CustomButton
             className="action-button"

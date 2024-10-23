@@ -1,8 +1,8 @@
-.show-points{
-    display: flex;
-    height: 80%;
-    width: 40%;
-    font-size: x-large;
-    justify-content: center;
-    align-items: center;
+.show-points {
+  display: flex;
+  height: 80%;
+  width: 40%;
+  font-size: x-large;
+  justify-content: center;
+  align-items: center;
 }
