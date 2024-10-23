@@ -13,7 +13,7 @@ export const useGame = () => {
     if (!currentDifficulty || !currentName) {
       navigate('/');
     }
-  }, []);
+  });
 
   const [startTimer, setStartTimer] = useState<boolean>(false);
   const [showCompleteGameModal, setCompleteGameModal] = useState(false);
