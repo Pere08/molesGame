@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { IMoleBox } from './MoleBox.props';
 import { getCachedImage, loadCachedImage } from '../../services/pokeService';
 import './MoleBox.css';
-import { pokeballImg } from '../../utils/utils';
+import { pokeballImg, vibrate } from '../../utils/utils';
 
 const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
   const [pokemonImage, setPokemonImage] = useState<string>('');
@@ -22,9 +22,7 @@ const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
   }, []);
 
   const handleClick = () => {
-    if (navigator.vibrate) {
-      navigator.vibrate(100);
-    }
+    vibrate();
     setNumPoints((prev) => prev + pointsByDifficulty);
   };
 
