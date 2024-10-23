@@ -1,12 +1,12 @@
 # Vite React TypeScript Starter
 
-This project is set up to use **React 18**, **TypeScript**, and **Vite**, along with additional tools like **ESLint**, **Prettier**, and **Vitest**. This guide provides an overview of the project's setup and available scripts.
+This project is set up to use **React 17**, **TypeScript**, and **Vite**, along with additional tools like **ESLint**, **Prettier**, and **Vitest**. This guide provides an overview of the project's setup and available scripts.
 
 ## Project Setup
 
 This project includes:
 
-- **React 18.3.1**
+- **React 17.0.2**
 - **Vite** for fast development with HMR
 - **ESLint** for maintaining consistent and error-free code
 - **Prettier** for code formatting

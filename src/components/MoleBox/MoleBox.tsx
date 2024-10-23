@@ -21,13 +21,17 @@ const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
     });
   }, []);
 
+  const handleClick = () => {
+    if (navigator.vibrate) {
+      navigator.vibrate(100);
+    }
+    setNumPoints((prev) => prev + pointsByDifficulty);
+  };
+
   return (
     <div className="mole-box">
       {show ? (
-        <div
-          className="image-container"
-          onClick={() => setNumPoints((prev) => prev + pointsByDifficulty)}
-        >
+        <div className="image-container" onClick={handleClick}>
           <img
             className="image-pokemon"
             src={pokemonImage}

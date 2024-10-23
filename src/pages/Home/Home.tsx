@@ -1,59 +1,14 @@
-import { useState, useEffect } from 'react';
 import ChooseDifficulty from '../../components/ChooseDifficulty/ChooseDifficulty';
 import UserNameInput from '../../components/UserNameInput/UserNameInput';
-import { useNavigate } from 'react-router-dom';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import useHome, { Difficulty } from '../../hooks/useHome';
 import './Home.css';
 
-export type Difficulty = 'easy' | 'medium' | 'hard';
-
 const Home = () => {
-  const navigate = useNavigate();
-
-  const [errorMsg, setErrorMsg] = useState({
-    username: false,
-    difficulty: false,
-  });
-
-  const [userName, setUserName] = useState<string>('');
-  const [difficulty, setDifficulty] = useState<Difficulty | undefined>();
+  const { errorMsg, userName, setUserName, setDifficulty, onSubmit } =
+    useHome();
 
   const difficultyList: Difficulty[] = ['easy', 'medium', 'hard'];
-
-  useEffect(() => {
-    const storedUserName = localStorage.getItem('userName') || '';
-    setUserName(storedUserName);
-  }, []);
-
-  useEffect(() => {
-    if (userName) {
-      localStorage.setItem('userName', userName);
-    }
-  }, [userName]);
-
-  useEffect(() => {
-    if (difficulty) {
-      localStorage.setItem('difficulty', difficulty);
-    }
-  }, [difficulty]);
-
-  const onSubmit = () => {
-    setErrorMsg({ username: false, difficulty: false });
-    setTimeout(() => {
-      if (userName && difficulty) {
-        console.log(userName);
-        console.log(difficulty);
-        navigate('/game');
-      } else {
-        if (!userName) {
-          setErrorMsg((prev) => ({ ...prev, username: true }));
-        }
-        if (!difficulty) {
-          setErrorMsg((prev) => ({ ...prev, difficulty: true }));
-        }
-      }
-    }, 500);
-  };
 
   return (
     <div className="home">
@@ -65,7 +20,9 @@ const Home = () => {
       <div className="input-username" data-testid="username-input">
         <UserNameInput defaultValue={userName} setUserName={setUserName} />
         {errorMsg.username && (
-          <span className="error-msg">Enter a user name, please</span>
+          <span className="error-msg" data-testid="error-msg-username">
+            Enter a name, please
+          </span>
         )}
       </div>
 
@@ -75,13 +32,15 @@ const Home = () => {
           setDifficulty={setDifficulty}
         />
         {errorMsg.difficulty && (
-          <span className="error-msg">Select some difficulty, please</span>
+          <span className="error-msg" data-testid="error-msg-difficulty">
+            Select some difficulty, please
+          </span>
         )}
       </div>
 
-      <div className="start-button-box" data-testid="start-button-box">
+      <div className="button-container">
         <CustomButton
-          test-id="start-button"
+          testId="start-button"
           className="play-button"
           onClick={onSubmit}
           name="PLAY"
