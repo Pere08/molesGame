@@ -16,8 +16,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "types": ["vite/client", "vitest/globals"],
+    "types": ["vite/client", "vitest/globals", "cypress"],
     "esModuleInterop": true 
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "cypress/**/*.ts", "cypress.config.ts"]
 }
