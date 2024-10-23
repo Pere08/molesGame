@@ -25,7 +25,7 @@ const Game = () => {
     showCompleteGameModal,
     handleReturnHome,
     handleFinishCountDown,
-    handlePlayAgain
+    handlePlayAgain,
   } = useGame();
 
   return (

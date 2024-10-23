@@ -99,6 +99,6 @@ export const useGame = () => {
     showCompleteGameModal,
     handleReturnHome,
     handleFinishCountDown,
-    handlePlayAgain
+    handlePlayAgain,
   };
 };
