@@ -25,6 +25,7 @@ const Game = () => {
     showCompleteGameModal,
     handleReturnHome,
     handleFinishCountDown,
+    handlePlayAgain
   } = useGame();
 
   return (
@@ -34,7 +35,7 @@ const Game = () => {
         isVisible={showCompleteGameModal}
         points={numPoints}
         closeGameFn={handleReturnHome}
-        playAgainFn={handleStartTimer}
+        playAgainFn={handlePlayAgain}
       />
 
       <div className="information-bar-container">
