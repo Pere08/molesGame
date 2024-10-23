@@ -19,6 +19,7 @@ describe('Game component', () => {
   };
 
   beforeEach(() => {
+    // @ts-expect-error: The 'vi' namespace is not recognized by TypeScript
     (useGame as vi.Mock).mockReturnValue(mockUseGame);
   });
 
