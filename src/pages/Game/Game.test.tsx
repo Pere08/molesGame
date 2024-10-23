@@ -24,8 +24,8 @@ describe('Game component', () => {
 
   it('should render the user name and difficulty level', () => {
     render(<Game />);
-    const playerName = "Player";
-    const level = firstCapitalLetter("easy");
+    const playerName = 'Player';
+    const level = firstCapitalLetter('easy');
 
     expect(screen.getByText(`Player ${playerName}`)).toBeInTheDocument();
     expect(screen.getByText(`Level ${level}`)).toBeInTheDocument();
@@ -44,12 +44,12 @@ describe('Game component', () => {
       ...mockUseGame,
       moleBoxes: [true, false, false, false, false],
     });
-  
+
     render(<Game />);
-  
-    const moleBoxes = screen.getAllByRole('img'); 
+
+    const moleBoxes = screen.getAllByRole('img');
     fireEvent.click(moleBoxes[0]);
-  
+
     expect(mockUseGame.setNumPoints).toHaveBeenCalled();
   });
 
