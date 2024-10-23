@@ -15,7 +15,7 @@ const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
       }
     });
     getCachedImage(pokeballImg).then((img) => {
-      if(img){
+      if (img) {
         setPokeBallImg(img);
       }
     });
@@ -36,11 +36,7 @@ const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
         </div>
       ) : (
         <div className="image-container">
-          <img
-            className="image-pokeball"
-            src={pokeBallImg}
-            alt="Poké Ball"
-          />
+          <img className="image-pokeball" src={pokeBallImg} alt="Poké Ball" />
         </div>
       )}
     </div>

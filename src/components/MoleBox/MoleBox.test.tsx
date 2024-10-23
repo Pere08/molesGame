@@ -16,10 +16,16 @@ describe('MoleBox', () => {
   });
 
   it('renders pokeball image when show is false', async () => {
-    (getCachedImage as vi.Mock).mockResolvedValue(Promise.resolve('cached-pokeball-image'));
-    (loadCachedImage as vi.Mock).mockResolvedValue(Promise.resolve('cached-pokemon-image'));
+    (getCachedImage as vi.Mock).mockResolvedValue(
+      Promise.resolve('cached-pokeball-image'),
+    );
+    (loadCachedImage as vi.Mock).mockResolvedValue(
+      Promise.resolve('cached-pokemon-image'),
+    );
 
-    render(<MoleBox show={false} setNumPoints={() => {}} pointsByDifficulty={1} />);
+    render(
+      <MoleBox show={false} setNumPoints={() => {}} pointsByDifficulty={1} />,
+    );
 
     const pokeballImage = await screen.findByAltText('Poké Ball');
     expect(pokeballImage).toBeInTheDocument();
@@ -27,9 +33,13 @@ describe('MoleBox', () => {
   });
 
   it('renders pokemon image when show is true', async () => {
-    (loadCachedImage as vi.Mock).mockResolvedValue(Promise.resolve('cached-pokemon-image'));
+    (loadCachedImage as vi.Mock).mockResolvedValue(
+      Promise.resolve('cached-pokemon-image'),
+    );
 
-    render(<MoleBox show={true} setNumPoints={() => {}} pointsByDifficulty={1} />);
+    render(
+      <MoleBox show={true} setNumPoints={() => {}} pointsByDifficulty={1} />,
+    );
 
     const pokemonImage = await screen.findByAltText('Random Pokémon');
     expect(pokemonImage).toBeInTheDocument();
@@ -38,9 +48,17 @@ describe('MoleBox', () => {
 
   it('increments points by difficulty when pokemon is clicked', async () => {
     const setNumPoints = vi.fn();
-    (loadCachedImage as vi.Mock).mockResolvedValue(Promise.resolve('cached-pokemon-image'));
+    (loadCachedImage as vi.Mock).mockResolvedValue(
+      Promise.resolve('cached-pokemon-image'),
+    );
 
-    render(<MoleBox show={true} setNumPoints={setNumPoints} pointsByDifficulty={5} />);
+    render(
+      <MoleBox
+        show={true}
+        setNumPoints={setNumPoints}
+        pointsByDifficulty={5}
+      />,
+    );
 
     const pokemonImage = await screen.findByAltText('Random Pokémon');
     fireEvent.click(pokemonImage);

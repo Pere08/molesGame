@@ -26,7 +26,6 @@ const ChooseDifficulty = ({
     });
   }, []);
 
-
   return (
     <div className="choose-difficulty-button-box">
       {difficultyList.map((name, index) => {
@@ -39,7 +38,7 @@ const ChooseDifficulty = ({
             onClick={() => difficultyHandler(name as Difficulty)}
             img={imgList[index] ?? ''}
           />
-        )
+        );
       })}
     </div>
   );
