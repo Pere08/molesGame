@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import Game from './Game';
 import { useGame } from '../../hooks/useGame';
-import { firstCapitalLetter } from '../../utils/utils';
 
 vi.mock('../../hooks/useGame');
 
@@ -26,7 +25,7 @@ describe('Game component', () => {
   it('should render the user name and difficulty level', () => {
     render(<Game />);
     const playerName = 'Jugador';
-    const level = firstCapitalLetter('easy');
+    const level = 'game.difficulty.easy';
 
     expect(screen.getByText(playerName)).toBeInTheDocument();
     expect(screen.getByText(level)).toBeInTheDocument();

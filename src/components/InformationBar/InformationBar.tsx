@@ -1,5 +1,4 @@
 import { IInformationBar } from './InformationBar.props';
-import { firstCapitalLetter } from '../../utils/utils';
 import './InformationBar.scss';
 import { useTranslation } from 'react-i18next';
 
@@ -14,7 +13,7 @@ const InformationBar = ({ userName, difficultyLevel }: IInformationBar) => {
       <button className="difficulty-selected" type="button">
         {t('game.level')}
         <span className="difficulty">
-          {firstCapitalLetter(difficultyLevel)}
+          {t(`game.difficulty.${difficultyLevel}`)}
         </span>
       </button>
     </div>

@@ -1,4 +1,6 @@
+import { Difficulty } from '../../hooks/useHome';
+
 export interface IInformationBar {
   userName: string;
-  difficultyLevel: string;
+  difficultyLevel: Difficulty;
 }
