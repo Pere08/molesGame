@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
 import Home from './pages/Home/Home';
 import Game from './pages/Game/Game';
 import { loadPokemonImages } from './services/pokeService';
+import '../i18n';
+import './App.css';
 
 function App() {
   useEffect(() => {

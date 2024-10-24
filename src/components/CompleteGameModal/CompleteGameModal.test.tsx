@@ -30,8 +30,8 @@ describe('CompleteGameModal', () => {
       />,
     );
 
-    expect(screen.getByText('Thanks for play!')).toBeInTheDocument();
-    expect(screen.getByText('Points: 150')).toBeInTheDocument();
+    expect(screen.getByText('game.completeGame.thanks')).toBeInTheDocument();
+    expect(screen.getByText('game.points: 150')).toBeInTheDocument();
   });
 
   it('should call playAgainFn when "Play again" button is clicked', () => {
@@ -44,7 +44,7 @@ describe('CompleteGameModal', () => {
       />,
     );
 
-    const playAgainButton = screen.getByText('Play again');
+    const playAgainButton = screen.getByText('game.completeGame.play');
     fireEvent.click(playAgainButton);
 
     expect(mockPlayAgainFn).toHaveBeenCalledTimes(1);
@@ -60,7 +60,7 @@ describe('CompleteGameModal', () => {
       />,
     );
 
-    const closeGameButton = screen.getByText('No thanks');
+    const closeGameButton = screen.getByText('game.completeGame.noPlay');
     fireEvent.click(closeGameButton);
 
     expect(mockCloseGameFn).toHaveBeenCalledTimes(1);

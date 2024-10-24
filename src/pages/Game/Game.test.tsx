@@ -57,7 +57,7 @@ describe('Game component', () => {
   it('should display "Start" button when game is not active', () => {
     render(<Game />);
 
-    const startButton = screen.getByText('Start');
+    const startButton = screen.getByText('game.buttons.start');
     expect(startButton).toBeInTheDocument();
     fireEvent.click(startButton);
     expect(mockUseGame.handleStartTimer).toHaveBeenCalledTimes(1);
@@ -72,7 +72,7 @@ describe('Game component', () => {
 
     render(<Game />);
 
-    const stopButton = screen.getByText('Stop');
+    const stopButton = screen.getByText('game.buttons.stop');
     expect(stopButton).toBeInTheDocument();
     fireEvent.click(stopButton);
     expect(mockUseGame.stopToggling).toHaveBeenCalledTimes(1);

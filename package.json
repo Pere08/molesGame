@@ -13,12 +13,14 @@
     "test:husky": "vitest --run",
     "cypress:open": "npx cypress open",
     "start": "vite preview --port 5173",
-    "test:e2e": "cypress run",
-    "test:vercel": "npm run build && npm run start & npx wait-on http://localhost:5173 && npm run test:e2e"
+    "test:e2e": "cypress run"
   },
   "dependencies": {
+    "i18next": "^23.16.2",
+    "i18next-browser-languagedetector": "^8.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-i18next": "^15.1.0",
     "react-router-dom": "^6.27.0"
   },
   "devDependencies": {

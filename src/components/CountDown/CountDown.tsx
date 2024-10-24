@@ -1,8 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import useCountDown from '../../hooks/useCountDown';
 import { ICountDown } from './CountDown.props';
 import './CountDown.scss';
 
 const CountDown = ({ initialTime, isActive, onTimerEnd }: ICountDown) => {
+  const { t } = useTranslation();
   const milliseconds = useCountDown(initialTime, isActive, onTimerEnd);
 
   const formatTime = (ms: number) => {
@@ -15,7 +17,7 @@ const CountDown = ({ initialTime, isActive, onTimerEnd }: ICountDown) => {
 
   return (
     <button className="counter">
-      Time <span className="count">{formatTime(milliseconds)}</span>
+      {t('game.time')} <span className="count">{formatTime(milliseconds)}</span>
     </button>
   );
 };

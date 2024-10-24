@@ -26,7 +26,7 @@ describe('Home', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByText("Mole's Game")).toBeInTheDocument();
+    expect(screen.getByText('home.title')).toBeInTheDocument();
     expect(screen.getByTestId('username-input')).toBeInTheDocument();
     expect(screen.getByTestId('difficulty-choice')).toBeInTheDocument();
     expect(screen.getByTestId('start-button')).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe('Home', () => {
       .querySelector('input');
     expect(usernameInput).toHaveValue('John Doe');
 
-    const selectedDifficulty = screen.getByText('Hard');
+    const selectedDifficulty = screen.getByText('game.difficulty.hard');
     expect(selectedDifficulty).toBeInTheDocument();
   });
 
@@ -63,7 +63,7 @@ describe('Home', () => {
       .querySelector('input');
     fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
 
-    const hardButton = screen.getByText('Hard');
+    const hardButton = screen.getByText('game.difficulty.hard');
     fireEvent.click(hardButton);
 
     const startButton = screen.getByTestId('start-button');
@@ -102,7 +102,7 @@ describe('Home', () => {
       .querySelector('input');
     fireEvent.change(usernameInput!, { target: { value: 'Alice' } });
 
-    const hardButton = screen.getByText('Hard');
+    const hardButton = screen.getByText('game.difficulty.hard');
     fireEvent.click(hardButton);
 
     const startButton = screen.getByTestId('start-button');

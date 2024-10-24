@@ -20,5 +20,5 @@
     "esModuleInterop": true 
   },
   "include": ["vite.config.ts"],
-  "exclude": ["cypress"]
+  "exclude": ["cypress", "**/*.cy.ts"]
 }
