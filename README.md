@@ -38,6 +38,10 @@ The following scripts are available to assist with development:
 - **`npm run test`**: Runs tests with Vitest, including type checking.
 - **`npm run test:watch`**: Watches for changes and reruns tests automatically.
 - **`npm run test:husky`**: Runs tests before pushing changes.
+- **`npm run cypress:open`**: Open Cypress app.
+- **`npm run start`**: Lauch project on a specifict port.
+- **`npm run test:e2e`**: Runs E2E test with Cypress.
+- **`npm run test:chrome`**: Runs E2E test with Cypress using Chrome.
 
 ### Testing
 
@@ -66,6 +70,10 @@ For code formatting with Prettier, ensure you have a `.prettierrc` file in your 
   "trailingComma": "es5"
 }
 ```
+
+### Continuous Integration
+
+This project includes a GitHub Actions pipeline to automate testing. The pipeline runs tests on every pull request and push to the main branch, ensuring that only tested code is deployed.
 
 ### Conclusion
 

@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
 
@@ -23,9 +23,16 @@ jobs:
         run: npm install
 
       - name: Start the server
-        run: npm run build && npm start &
+        run: |
+          npm run build && npm start &
+          # Wait for the server to start (adjust the timeout as needed)
+          sleep 10
         env:
           CI: true
 
-      - name: Run Cypress tests
-        run: npx cypress run
+      - name: Run Cypress tests in Chrome
+        run: npx cypress run --browser chrome
+
+      - name: Stop the server
+        run: |
+          kill $(jobs -p)
