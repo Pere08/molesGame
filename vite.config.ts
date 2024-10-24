@@ -29,6 +29,7 @@ export default defineConfig({
             type: 'image/png',
           },
         ],
+        orientation: 'portrait',
       },
     }),
   ],
