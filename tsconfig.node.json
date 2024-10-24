@@ -19,5 +19,6 @@
     "types": ["vite/client", "vitest/globals"],
     "esModuleInterop": true 
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts"],
+  "exclude": ["cypress"]
 }
