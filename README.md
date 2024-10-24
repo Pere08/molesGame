@@ -38,6 +38,9 @@ The following scripts are available to assist with development:
 - **`npm run test`**: Runs tests with Vitest, including type checking.
 - **`npm run test:watch`**: Watches for changes and reruns tests automatically.
 - **`npm run test:husky`**: Runs tests before pushing changes.
+- **`npm run cypress:open`**: Runs tests before pushing changes.
+- **`npm run start`**: Runs tests before pushing changes.
+- **`npm run test:e2e`**: Runs tests before pushing changes.
 
 ### Testing
 
@@ -66,6 +69,10 @@ For code formatting with Prettier, ensure you have a `.prettierrc` file in your 
   "trailingComma": "es5"
 }
 ```
+
+### Continuous Integration
+
+This project includes a GitHub Actions pipeline to automate testing. The pipeline runs tests on every pull request and push to the main branch, ensuring that only tested code is deployed.
 
 ### Conclusion
 
