@@ -13,8 +13,7 @@
     "test:husky": "vitest --run",
     "cypress:open": "npx cypress open",
     "start": "vite preview --port 5173",
-    "test:e2e": "cypress run",
-    "test:vercel": "npm run build && npm run start & npx wait-on http://localhost:5173 && npm run test:e2e"
+    "test:e2e": "cypress run"
   },
   "dependencies": {
     "react": "^17.0.2",
