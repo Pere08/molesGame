@@ -48,3 +48,9 @@ button:focus {
   background-color: rgb(255, 223, 160);
   outline-offset: 5px;
 }
+
+@media screen and (orientation: landscape) {
+  body {
+    display: none;
+  }
+}
