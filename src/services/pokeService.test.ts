@@ -15,7 +15,7 @@ describe('Pokemon Service', () => {
       expect(images.length).toBe(3);
       images.forEach((image) => {
         expect(typeof image).toBe('string');
-        expect(image).toMatch(/\.png$/); 
+        expect(image).toMatch(/\.png$/);
       });
     });
 

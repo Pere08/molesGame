@@ -1,6 +1,6 @@
 import { ITimer } from './Timer.props';
-import './Timer.css';
 import { useCountdownTimer } from '../../hooks/useCountdownTimer';
+import './Timer.scss';
 
 const Timer = ({ startCountdown, onComplete }: ITimer) => {
   const { count, isVisible } = useCountdownTimer({
@@ -13,10 +13,7 @@ const Timer = ({ startCountdown, onComplete }: ITimer) => {
   return (
     <div className="modal-background-timer">
       <div className="modal-content-timer">
-        {count > 0 ? 
-        (<>
-          Timer <span>{count}</span>
-        </>) : <span>GO!</span>}
+        {count > 0 ? <h1>{count}</h1> : <h1>GO!</h1>}
       </div>
     </div>
   );

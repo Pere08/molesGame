@@ -18,7 +18,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "types": ["vitest/globals", "cypress"]
+    "types": ["vitest/globals"]
   },
   "include": ["src", "vite.config.ts", "setupTests.ts", "cypress/**/*.ts", "cypress.config.ts"],
   "exclude": ["node_modules"]

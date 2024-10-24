@@ -8,7 +8,7 @@ import { difficultyParameters } from '../../utils/gameParameters';
 import Timer from '../../components/Timer/Timer';
 import CompleteGameModal from '../../components/CompleteGameModal/CompleteGameModal';
 import { Difficulty } from '../../hooks/useHome';
-import './Game.css';
+import './Game.scss';
 
 const Game = () => {
   const {

@@ -1,5 +1,5 @@
 import { ICustomButton } from './CustomButton.props';
-import './CustomButton.css';
+import './CustomButton.scss';
 
 const CustomButton = ({
   className,

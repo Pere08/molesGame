@@ -1,3 +1,5 @@
+$color_1: rgb(95, 60, 6);
+
 .show-points {
   display: flex;
   flex-direction: column;
@@ -6,10 +8,10 @@
   font-size: x-large;
   justify-content: center;
   align-items: center;
-}
 
-.points {
-  font-weight: bold;
-  font-size: xx-large;
-  color: rgb(95, 60, 6);
+  .points {
+    font-weight: bold;
+    font-size: x-large;
+    color: $color_1;
+  }
 }

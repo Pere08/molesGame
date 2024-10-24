@@ -1,5 +1,5 @@
 import { IUserNameInput } from './UserNameInput.props';
-import './UserNameInput.css';
+import './UserNameInput.scss';
 
 const UserNameInput = ({ defaultValue, setUserName }: IUserNameInput) => {
   return (

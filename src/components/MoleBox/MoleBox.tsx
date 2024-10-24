@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { IMoleBox } from './MoleBox.props';
 import { getCachedImage, loadCachedImage } from '../../services/pokeService';
-import './MoleBox.css';
 import { pokeballImg, vibrate } from '../../utils/utils';
+import './MoleBox.scss';
 
 const MoleBox = ({ show, setNumPoints, pointsByDifficulty }: IMoleBox) => {
   const [pokemonImage, setPokemonImage] = useState<string>('');

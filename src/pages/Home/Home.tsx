@@ -2,7 +2,7 @@ import ChooseDifficulty from '../../components/ChooseDifficulty/ChooseDifficulty
 import UserNameInput from '../../components/UserNameInput/UserNameInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import useHome, { Difficulty } from '../../hooks/useHome';
-import './Home.css';
+import './Home.scss';
 
 const Home = () => {
   const { errorMsg, userName, setUserName, setDifficulty, onSubmit } =

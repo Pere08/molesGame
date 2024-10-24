@@ -1,0 +1,41 @@
+$color_1: rgb(95, 60, 6);
+
+.information-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  .user-name-info {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 40%;
+    font-size: x-large;
+    justify-content: center;
+    align-items: center;
+
+    .user-name {
+      font-weight: bold;
+      font-size: x-large;
+      color: $color_1;
+    }
+  }
+
+  .difficulty-selected {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 40%;
+    font-size: x-large;
+    justify-content: center;
+    align-items: center;
+
+    .difficulty {
+      font-weight: bold;
+      font-size: x-large;
+      color: $color_1;
+    }
+  }
+}
