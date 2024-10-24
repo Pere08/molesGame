@@ -13,7 +13,8 @@
     "test:husky": "vitest --run",
     "cypress:open": "npx cypress open",
     "start": "vite preview --port 5173",
-    "test:e2e": "cypress run"
+    "test:e2e": "cypress run",
+    "test:chrome": "npx cypress run --browser chrome"
   },
   "dependencies": {
     "i18next": "^23.16.2",

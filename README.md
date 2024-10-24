@@ -38,9 +38,10 @@ The following scripts are available to assist with development:
 - **`npm run test`**: Runs tests with Vitest, including type checking.
 - **`npm run test:watch`**: Watches for changes and reruns tests automatically.
 - **`npm run test:husky`**: Runs tests before pushing changes.
-- **`npm run cypress:open`**: Runs tests before pushing changes.
-- **`npm run start`**: Runs tests before pushing changes.
-- **`npm run test:e2e`**: Runs tests before pushing changes.
+- **`npm run cypress:open`**: Open Cypress app.
+- **`npm run start`**: Lauch project on a specifict port.
+- **`npm run test:e2e`**: Runs E2E test with Cypress.
+- **`npm run test:chrome`**: Runs E2E test with Cypress using Chrome.
 
 ### Testing
 

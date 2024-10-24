@@ -3,7 +3,7 @@ describe("Mole's Game Page", () => {
         cy.viewport('iphone-6');
         cy.visit('http://localhost:5173/');
         cy.get('.user-name-input').type('Player'); 
-        cy.get('.difficulty-button').contains('Easy').click();
+        cy.get('.difficulty-button').contains('Hard').click();
         cy.get('button').contains('PLAY').click();
     });
 
@@ -16,13 +16,13 @@ describe("Mole's Game Page", () => {
 
     it('should show game over message when time runs out', () => {
         cy.get('.action-button').click();
-        cy.wait(45000); 
+        cy.wait(35000); 
         cy.contains('Thanks for play!').should('be.visible'); 
     });
 
     it('should allow restarting the game', () => {
         cy.get('.action-button').click();
-        cy.wait(45000); 
+        cy.wait(35000); 
         cy.contains('Play again').click(); 
         cy.get('.show-points .points').should('contain', '0'); 
     });
