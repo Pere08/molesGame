@@ -12,7 +12,7 @@ describe('Game component', () => {
     setNumPoints: vi.fn(),
     moleBoxes: [true, false, false, false, false],
     currentDifficulty: 'easy',
-    currentName: 'Player',
+    currentName: 'Jugador',
     togglingState: false,
     stopToggling: vi.fn(),
     handleStartTimer: vi.fn(),
@@ -25,11 +25,11 @@ describe('Game component', () => {
 
   it('should render the user name and difficulty level', () => {
     render(<Game />);
-    const playerName = 'Player';
+    const playerName = 'Jugador';
     const level = firstCapitalLetter('easy');
 
-    expect(screen.getByText(`Player ${playerName}`)).toBeInTheDocument();
-    expect(screen.getByText(`Level ${level}`)).toBeInTheDocument();
+    expect(screen.getByText(playerName)).toBeInTheDocument();
+    expect(screen.getByText(level)).toBeInTheDocument();
   });
 
   it('should render the correct number of MoleBox components', () => {

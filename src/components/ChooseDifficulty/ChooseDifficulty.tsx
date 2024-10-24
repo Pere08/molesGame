@@ -8,7 +8,7 @@ import {
 import { cacheImage, getCachedImage } from '../../services/pokeService';
 import { useEffect, useState } from 'react';
 import { Difficulty } from '../../hooks/useHome';
-import './ChooseDifficulty.css';
+import './ChooseDifficulty.scss';
 
 const ChooseDifficulty = ({
   difficultyList,

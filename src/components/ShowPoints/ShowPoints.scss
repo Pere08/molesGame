@@ -1,0 +1,17 @@
+$color_1: rgb(95, 60, 6);
+
+.show-points {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 40%;
+  font-size: x-large;
+  justify-content: center;
+  align-items: center;
+
+  .points {
+    font-weight: bold;
+    font-size: x-large;
+    color: $color_1;
+  }
+}

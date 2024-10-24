@@ -15,12 +15,11 @@ describe('Pokemon Service', () => {
       expect(images.length).toBe(3);
       images.forEach((image) => {
         expect(typeof image).toBe('string');
-        expect(image).toMatch(/\.png$/); // Comprobar que la URL termine con .png
+        expect(image).toMatch(/\.png$/);
       });
     });
 
     it('should handle errors gracefully', async () => {
-      // Simular una falla en la API
       global.fetch = vi.fn(() => Promise.reject('API is down'));
 
       await expect(fetchPokemonImages(1)).rejects.toEqual('API is down');

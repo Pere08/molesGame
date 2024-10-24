@@ -1,4 +1,4 @@
-import './CompleteGameModal.css';
+import './CompleteGameModal.scss';
 
 const ICompleteGameModal = ({
   points,

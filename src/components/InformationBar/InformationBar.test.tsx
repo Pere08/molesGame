@@ -11,10 +11,9 @@ describe('InformationBar', () => {
       <InformationBar userName={userName} difficultyLevel={difficultyLevel} />,
     );
 
-    const userNameElement = screen.getByText(
-      `Player ${firstCapitalLetter(userName)}`,
-    );
+    const userNameElement = screen.getByText(firstCapitalLetter(userName));
     expect(userNameElement).toBeInTheDocument();
+    expect(screen.getByText('Player')).toBeInTheDocument();
   });
 
   it('should display the difficulty level correctly', () => {
@@ -26,9 +25,10 @@ describe('InformationBar', () => {
     );
 
     const difficultyElement = screen.getByText(
-      `Level ${firstCapitalLetter(difficultyLevel)}`,
+      firstCapitalLetter(difficultyLevel),
     );
     expect(difficultyElement).toBeInTheDocument();
+    expect(screen.getByText('Level')).toBeInTheDocument();
   });
 
   it('should render with correct props', () => {
@@ -39,11 +39,11 @@ describe('InformationBar', () => {
       <InformationBar userName={userName} difficultyLevel={difficultyLevel} />,
     );
 
+    expect(screen.getByText(firstCapitalLetter(userName))).toBeInTheDocument();
     expect(
-      screen.getByText(`Player ${firstCapitalLetter(userName)}`),
+      screen.getByText(firstCapitalLetter(difficultyLevel)),
     ).toBeInTheDocument();
-    expect(
-      screen.getByText(`Level ${firstCapitalLetter(difficultyLevel)}`),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Player')).toBeInTheDocument();
+    expect(screen.getByText('Level')).toBeInTheDocument();
   });
 });

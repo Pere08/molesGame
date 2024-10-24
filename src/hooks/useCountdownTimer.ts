@@ -1,4 +1,3 @@
-// useCountdownTimer.ts
 import { useEffect, useState } from 'react';
 
 interface UseCountdownTimerProps {

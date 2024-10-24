@@ -39,16 +39,16 @@ export default [
       'react-refresh': reactRefresh,
     },
     linterOptions: {
-      reportUnusedDisableDirectives: true, // Para advertir sobre directivas no usadas
+      reportUnusedDisableDirectives: true,
     },
     rules: {
-      ...typescriptEslintPlugin.configs.recommended.rules, // Reglas de TypeScript
-      ...reactHooks.configs.recommended.rules, // Reglas de React Hooks
+      ...typescriptEslintPlugin.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
-      ...prettierConfig.rules, // Reglas de Prettier para mantener formato de código
+      ...prettierConfig.rules,
     },
   },
 ];

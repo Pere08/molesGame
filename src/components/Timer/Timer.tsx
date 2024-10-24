@@ -1,6 +1,6 @@
 import { ITimer } from './Timer.props';
-import './Timer.css';
 import { useCountdownTimer } from '../../hooks/useCountdownTimer';
+import './Timer.scss';
 
 const Timer = ({ startCountdown, onComplete }: ITimer) => {
   const { count, isVisible } = useCountdownTimer({

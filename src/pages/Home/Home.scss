@@ -1,0 +1,79 @@
+$color_1: #fff;
+$color_2: rgb(247, 165, 102);
+$color_3: red;
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('../../images/background.png');
+  background-size: cover;
+  background-position: center;
+
+  .title-container {
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vw;
+    color: $color_1;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px #333;
+    font-size: 20px;
+    font-weight: bold;
+
+    .title {
+      margin: 0;
+    }
+    .sub-title {
+      margin: 0;
+      color: $color_2;
+    }
+  }
+
+  .input-username {
+    height: 15vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+  .choose-difficulty {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 5vw;
+  }
+  .error-msg-container {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+  }
+  .error-msg {
+    color: $color_3;
+    font-weight: bold;
+    font-size: medium;
+    color: $color_3;
+    font-size: medium;
+    font-weight: bolder;
+  }
+  .button-container {
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    font-size: 4vw;
+    align-items: center;
+    margin-top: 10%;
+
+    .play-button {
+      width: 80vw;
+      font-size: 6vw;
+      font-weight: bold;
+    }
+  }
+}
