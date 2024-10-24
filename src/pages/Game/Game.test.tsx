@@ -25,11 +25,11 @@ describe('Game component', () => {
 
   it('should render the user name and difficulty level', () => {
     render(<Game />);
-    const playerName = 'Player';
+    const playerName = 'Jugador_1';
     const level = firstCapitalLetter('easy');
 
-    expect(screen.getByText(`Player ${playerName}`)).toBeInTheDocument();
-    expect(screen.getByText(`Level ${level}`)).toBeInTheDocument();
+    expect(screen.getByText(playerName)).toBeInTheDocument();
+    expect(screen.getByText(level)).toBeInTheDocument();
   });
 
   it('should render the correct number of MoleBox components', () => {
