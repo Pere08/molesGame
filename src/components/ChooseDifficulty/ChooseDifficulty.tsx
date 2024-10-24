@@ -1,19 +1,17 @@
 import CustomButton from '../CustomButton/CustomButton';
 import { IChooseDifficulty } from './ChooseDifficulty.props';
-import {
-  allImages,
-  difficutlyImg,
-  firstCapitalLetter,
-} from '../../utils/utils';
+import { allImages, difficutlyImg } from '../../utils/utils';
 import { cacheImage, getCachedImage } from '../../services/pokeService';
 import { useEffect, useState } from 'react';
 import { Difficulty } from '../../hooks/useHome';
 import './ChooseDifficulty.scss';
+import { useTranslation } from 'react-i18next';
 
 const ChooseDifficulty = ({
   difficultyList,
   setDifficulty,
 }: IChooseDifficulty) => {
+  const { t } = useTranslation();
   const [imgList, setImgList] = useState<(string | undefined)[]>([]);
   const [isImgLoaded, setIsImgLoaded] = useState(false);
   const difficultyHandler = (difficulty: Difficulty) => {
@@ -48,7 +46,7 @@ const ChooseDifficulty = ({
             data-testid="difficulty-button"
             className="difficulty-button"
             key={`${name}-${index}`}
-            name={firstCapitalLetter(name)}
+            name={t(`game.difficulty.${name}`)}
             onClick={() => difficultyHandler(name as Difficulty)}
             img={imgList[index] ?? ''}
           />

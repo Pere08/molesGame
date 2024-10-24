@@ -9,8 +9,11 @@ import Timer from '../../components/Timer/Timer';
 import CompleteGameModal from '../../components/CompleteGameModal/CompleteGameModal';
 import { Difficulty } from '../../hooks/useHome';
 import './Game.scss';
+import { useTranslation } from 'react-i18next';
 
 const Game = () => {
+  const { t } = useTranslation();
+
   const {
     numPoints,
     setNumPoints,
@@ -72,13 +75,13 @@ const Game = () => {
         {togglingState ? (
           <CustomButton
             className="action-button"
-            name="Stop"
+            name={t('game.buttons.stop')}
             onClick={stopToggling}
           />
         ) : (
           <CustomButton
             className="action-button"
-            name="Start"
+            name={t('game.buttons.start')}
             onClick={handleStartTimer}
           />
         )}

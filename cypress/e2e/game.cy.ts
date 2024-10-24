@@ -8,28 +8,28 @@ describe("Mole's Game Page", () => {
     });
 
     it('should display the game elements correctly', () => {
-        cy.get('.show-points').should('be.visible'); // Elemento de puntos
-        cy.get('.counter').should('be.visible'); // Elemento de contador de tiempo
-        cy.get('.mole-box').should('have.length.greaterThan', 0); // Las cajas de los topos
+        cy.get('.show-points').should('be.visible');
+        cy.get('.counter').should('be.visible'); 
+        cy.get('.mole-box').should('have.length.greaterThan', 0); 
     });
 
     it('should increment score when a mole is clicked', () => {
-        cy.get('.mole-box').first().click(); // Click en el primer topo
+        cy.get('.mole-box').first().click(); 
         cy.get('.show-points .points').invoke('text').then((initialScore) => {
             const newScore = parseInt(initialScore, 10) + 1;
-            cy.get('.mole-box').first().click(); // Otro click para aumentar el puntaje
-            cy.get('.show-points .points').should('contain', newScore); // Verifica que el puntaje aumentó
+            cy.get('.mole-box').first().click(); 
+            cy.get('.show-points .points').should('contain', newScore); 
         });
     });
 
     it('should show game over message when time runs out', () => {
-        cy.wait(40000); // Esperar a que el tiempo se agote
-        cy.contains('Game Over').should('be.visible'); // Verificar si el mensaje "Game Over" aparece
+        cy.wait(40000); 
+        cy.contains('Game Over').should('be.visible'); 
     });
 
     it('should allow restarting the game', () => {
-        cy.get('.mole-box').first().click(); // Click en el primer topo
-        cy.get('.action-button').contains('Restart').click(); // Click en el botón de reinicio
-        cy.get('.show-points .points').should('contain', '0'); // Verificar que el puntaje se reinicia a 0
+        cy.get('.mole-box').first().click(); 
+        cy.get('.action-button').contains('Restart').click(); 
+        cy.get('.show-points .points').should('contain', '0'); 
     });
 });

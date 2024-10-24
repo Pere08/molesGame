@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import './CompleteGameModal.scss';
 
 const ICompleteGameModal = ({
@@ -11,19 +12,22 @@ const ICompleteGameModal = ({
   playAgainFn: () => void;
   closeGameFn: () => void;
 }) => {
+  const { t } = useTranslation();
   if (!isVisible) return null;
 
   return (
     <div className="modal-background">
       <div className="modal-content">
-        <h4>Thanks for play!</h4>
-        <h4>Points: {points}</h4>
+        <h4>{t('game.completeGame.thanks')}</h4>
+        <h4>
+          {t('game.points')}: {points}
+        </h4>
         <div className="buttons-container">
           <button type="button" onClick={playAgainFn}>
-            Play again
+            {t('game.completeGame.play')}
           </button>
           <button type="button" onClick={closeGameFn}>
-            No thanks
+            {t('game.completeGame.noPlay')}
           </button>
         </div>
       </div>
