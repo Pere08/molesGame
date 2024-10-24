@@ -13,7 +13,7 @@ describe('InformationBar', () => {
 
     const userNameElement = screen.getByText(firstCapitalLetter(userName));
     expect(userNameElement).toBeInTheDocument();
-    expect(screen.getByText('Player')).toBeInTheDocument();
+    expect(screen.getByText('game.player')).toBeInTheDocument();
   });
 
   it('should display the difficulty level correctly', () => {
@@ -28,7 +28,7 @@ describe('InformationBar', () => {
       firstCapitalLetter(difficultyLevel),
     );
     expect(difficultyElement).toBeInTheDocument();
-    expect(screen.getByText('Level')).toBeInTheDocument();
+    expect(screen.getByText('game.level')).toBeInTheDocument();
   });
 
   it('should render with correct props', () => {
@@ -43,7 +43,7 @@ describe('InformationBar', () => {
     expect(
       screen.getByText(firstCapitalLetter(difficultyLevel)),
     ).toBeInTheDocument();
-    expect(screen.getByText('Player')).toBeInTheDocument();
-    expect(screen.getByText('Level')).toBeInTheDocument();
+    expect(screen.getByText('game.player')).toBeInTheDocument();
+    expect(screen.getByText('game.level')).toBeInTheDocument();
   });
 });
