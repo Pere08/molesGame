@@ -44,7 +44,7 @@ const Game = () => {
       <div className="information-bar-container">
         <InformationBar
           userName={currentName}
-          difficultyLevel={currentDifficulty}
+          difficultyLevel={currentDifficulty as Difficulty}
         />
       </div>
 

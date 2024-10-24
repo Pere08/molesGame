@@ -24,9 +24,7 @@ describe('InformationBar', () => {
       <InformationBar userName={userName} difficultyLevel={difficultyLevel} />,
     );
 
-    const difficultyElement = screen.getByText(
-      firstCapitalLetter(difficultyLevel),
-    );
+    const difficultyElement = screen.getByText('game.difficulty.hard');
     expect(difficultyElement).toBeInTheDocument();
     expect(screen.getByText('game.level')).toBeInTheDocument();
   });
@@ -41,7 +39,7 @@ describe('InformationBar', () => {
 
     expect(screen.getByText(firstCapitalLetter(userName))).toBeInTheDocument();
     expect(
-      screen.getByText(firstCapitalLetter(difficultyLevel)),
+      screen.getByText(`game.difficulty.${difficultyLevel}`),
     ).toBeInTheDocument();
     expect(screen.getByText('game.player')).toBeInTheDocument();
     expect(screen.getByText('game.level')).toBeInTheDocument();
