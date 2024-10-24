@@ -20,6 +20,6 @@
 
     "types": ["vitest/globals"]
   },
-  "include": ["src", "vite.config.ts", "setupTests.ts", "cypress/**/*.ts", "cypress.config.ts"],
+  "include": ["src", "vite.config.ts", "setupTests.ts"],
   "exclude": ["node_modules"]
 }
