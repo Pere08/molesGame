@@ -1,5 +1,3 @@
-// cypress/e2e/game.cy.ts
-
 describe("Mole's Game Page", () => {
     beforeEach(() => {
         cy.viewport('iphone-6');
